@@ -20,6 +20,8 @@ import {
 import type { DomainId, DomainProgress, TopicProgress } from '@/types/study'
 import { AchievementChecker } from '@/components/study/achievement-toast'
 import { ShareScoreCard } from '@/components/study/share-score-card'
+import { ActiveEventBanner } from '@/components/study/active-event-banner'
+import { StreakFreezeCard } from '@/components/study/streak-freeze-card'
 
 export const metadata = { title: 'Dashboard | CertForge' }
 
@@ -69,6 +71,12 @@ export default async function StudyDashboard() {
         bestMockScore={bestMockScore}
         domainAccuracies={domainAccuracies}
       />
+
+      {/* Seasonal event banner */}
+      <ActiveEventBanner />
+
+      {/* Streak freeze */}
+      <StreakFreezeCard />
 
       {/* Header with streak sharing */}
       <div className="flex items-center justify-between">

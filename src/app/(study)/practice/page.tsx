@@ -7,10 +7,12 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Skeleton } from '@/components/ui/skeleton'
-import { BookOpen, RefreshCw, CheckCircle, XCircle, Lightbulb, Filter, AlertTriangle } from 'lucide-react'
+import { BookOpen, RefreshCw, CheckCircle, XCircle, Lightbulb, Filter, AlertTriangle, Zap } from 'lucide-react'
+import Link from 'next/link'
 import { DOMAIN_NAMES, DOMAIN_COLORS } from '@/lib/study/constants'
 import type { DueCard, DomainId } from '@/types/study'
 import { Suspense } from 'react'
+import { DiscussionSection } from '@/components/study/discussion-section'
 
 const DOMAINS: DomainId[] = ['secure', 'resilient', 'performant', 'cost']
 
@@ -165,6 +167,22 @@ function PracticeContent() {
 
   return (
     <div className="p-6 max-w-3xl mx-auto space-y-4">
+      {/* Quick modes */}
+      <div className="flex flex-wrap gap-2">
+        <Link href="/practice/quick">
+          <Button variant="outline" size="sm" className="gap-1.5">
+            <Zap className="h-3.5 w-3.5 text-amber-400" />
+            Quick 10
+          </Button>
+        </Link>
+        <Link href="/practice/missed">
+          <Button variant="outline" size="sm" className="gap-1.5">
+            <XCircle className="h-3.5 w-3.5 text-red-400" />
+            Missed Only
+          </Button>
+        </Link>
+      </div>
+
       {/* Session header */}
       <div className="flex items-center justify-between">
         <div>
@@ -258,6 +276,11 @@ function PracticeContent() {
               <RefreshCw className="h-4 w-4 ml-1" />
             </Button>
           </div>
+
+          {/* Per-question discussion */}
+          {currentCard && (
+            <DiscussionSection questionId={currentCard.question_id} />
+          )}
         </div>
       )}
     </div>

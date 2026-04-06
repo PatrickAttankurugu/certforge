@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { cn } from '@/lib/utils'
 import { Bot, User, Send, RotateCcw, History, MessageSquare, ArrowLeft } from 'lucide-react'
+import { VoiceTutorButton } from '@/components/study/voice-tutor-button'
 import { DOMAIN_NAMES } from '@/lib/study/constants'
 import type { DomainId } from '@/types/study'
 
@@ -153,6 +154,7 @@ export default function TutorPage() {
           </p>
         </div>
         <div className="flex items-center gap-1">
+          <VoiceTutorButton />
           <Button variant="ghost" size="sm" onClick={handleShowHistory} aria-label="View conversation history">
             <History className="h-4 w-4 mr-1" />
             History

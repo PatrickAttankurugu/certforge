@@ -12,6 +12,7 @@ import { DOMAIN_NAMES, DOMAIN_COLORS, EXAM_PASS_SCORE, DIFFICULTY_LABELS } from 
 import { LottieAnimation } from '@/components/ui/lottie-animation'
 import { LOTTIE_URLS } from '@/lib/animations'
 import { ShareScoreCard } from '@/components/study/share-score-card'
+import { ExamDebrief } from '@/components/study/exam-debrief'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import type { DomainId, DomainBreakdown, QuestionOption } from '@/types/study'
@@ -178,6 +179,9 @@ export default function ExamResultsPage({ params }: { params: Promise<{ examId: 
           })}
         </CardContent>
       </Card>
+
+      {/* AI Debrief */}
+      <ExamDebrief examId={examId} />
 
       {/* Answer review */}
       {exam.questions && exam.questions.length > 0 && (

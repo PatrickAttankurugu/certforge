@@ -58,7 +58,14 @@ export function ShareScoreCard({
   }
 
   const handleLinkedIn = () => {
-    const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://certforge.dev')}&summary=${encodeURIComponent(shareText)}`
+    // LinkedIn share with proper pre-filled text
+    const certforgeUrl = 'https://certforge.dev'
+    const linkedInText = type === 'mock-exam'
+      ? `Excited to share my AWS SAA-C03 prep progress! Just scored ${score}/1000 on a CertForge mock exam. ${passed ? 'Predicted to PASS!' : 'Getting closer every day!'}\n\n#AWS #CloudComputing #Certification #CareerGrowth`
+      : type === 'streak'
+      ? `${streakDays}-day study streak on CertForge! Consistency is key for AWS certification prep.\n\n#AWS #StudyStreak #Certification`
+      : `${milestoneText}\n\nPreparing for AWS SAA-C03 with CertForge.\n\n#AWS #CloudComputing #Certification`
+    const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(certforgeUrl)}&summary=${encodeURIComponent(linkedInText)}`
     window.open(url, '_blank', 'width=550,height=420')
   }
 

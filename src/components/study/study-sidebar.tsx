@@ -14,6 +14,14 @@ import {
   Settings,
   LogOut,
   Sparkles,
+  Trophy,
+  Users,
+  Gift,
+  FileText,
+  Brain,
+  Map,
+  FlaskConical,
+  ArrowLeftRight,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { createClient } from '@/lib/supabase/client'
@@ -29,8 +37,17 @@ const navItems = [
   { href: '/domains', label: 'Domains', icon: Layers },
   { href: '/mock-exam', label: 'Mock Exam', icon: ClipboardCheck },
   { href: '/tutor', label: 'AI Tutor', icon: MessageSquare },
+  { href: '/socratic', label: 'Socratic Mode', icon: Brain },
+  { href: '/study-plan', label: 'Study Plan', icon: Map },
+  { href: '/cheat-sheets', label: 'Cheat Sheets', icon: FileText },
+  { href: '/compare', label: 'Compare Services', icon: ArrowLeftRight },
+  { href: '/leaderboard', label: 'Leaderboard', icon: Trophy },
+  { href: '/buddies', label: 'Study Buddies', icon: Users },
+  { href: '/labs', label: 'Labs', icon: FlaskConical },
   { href: '/progress', label: 'Progress', icon: BarChart3 },
   { href: '/bookmarks', label: 'Bookmarks', icon: Bookmark },
+  { href: '/referral', label: 'Referrals', icon: Gift },
+  { href: '/certificate', label: 'Certificate', icon: FileText },
 ]
 
 const bottomItems = [

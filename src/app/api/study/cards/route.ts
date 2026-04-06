@@ -12,17 +12,31 @@ export async function GET(request: Request) {
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
   const { searchParams } = new URL(request.url)
-  const limit = parseInt(searchParams.get('limit') ?? '20')
+  const mode = searchParams.get('mode')
+  const limit = mode === 'quick10' ? 10 : parseInt(searchParams.get('limit') ?? '20')
   const domainId = searchParams.get('domain') ?? undefined
 
   const { data, error } = await supabase.rpc('get_due_cards', {
     p_user_id: user.id,
-    p_limit: limit,
+    p_limit: mode === 'quick10' ? 50 : limit, // fetch more for quick10 to allow shuffling
     p_domain_id: domainId ?? null,
   })
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
-  return NextResponse.json(data ?? [])
+
+  let cards = data ?? []
+
+  // Quick 10 mode: shuffle and take exactly 10 from diverse domains
+  if (mode === 'quick10' && cards.length > 10) {
+    // Shuffle for variety
+    for (let i = cards.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [cards[i], cards[j]] = [cards[j], cards[i]]
+    }
+    cards = cards.slice(0, 10)
+  }
+
+  return NextResponse.json(cards)
 }
 
 // POST: Assign new questions as cards to the user (with adaptive difficulty)

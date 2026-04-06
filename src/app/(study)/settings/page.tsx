@@ -6,11 +6,12 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Skeleton } from '@/components/ui/skeleton'
 import { ConfirmDialog } from '@/components/ui/confirm-dialog'
-import { Settings, LogOut, Calendar, Target, Palette } from 'lucide-react'
+import { Settings, LogOut, Calendar, Target, Palette, Gift } from 'lucide-react'
 import { ThemeSwitcher } from '@/components/ui/theme-switcher'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
+import Link from 'next/link'
 
 interface ProfileData {
   full_name: string | null
@@ -167,6 +168,27 @@ export default function SettingsPage() {
           <Button onClick={handleSave} disabled={saving}>
             {saving ? 'Saving...' : 'Save Settings'}
           </Button>
+        </CardContent>
+      </Card>
+
+      {/* Referral */}
+      <Card>
+        <CardHeader className="pb-3">
+          <CardTitle className="text-base flex items-center gap-2">
+            <Gift className="h-4 w-4" />
+            Referral Program
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-muted-foreground mb-3">
+            Invite friends to CertForge and earn bonus XP and streak freezes when they sign up.
+          </p>
+          <Link href="/referral">
+            <Button variant="outline" size="sm">
+              <Gift className="h-4 w-4 mr-2" />
+              View Referral Dashboard
+            </Button>
+          </Link>
         </CardContent>
       </Card>
 
