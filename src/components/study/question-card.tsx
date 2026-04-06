@@ -99,18 +99,20 @@ export function QuestionCard({ card, onAnswer, showFeedback = true, examMode = f
       <CardContent className="space-y-4">
         <p className="text-sm leading-relaxed whitespace-pre-wrap">{card.question_text}</p>
 
-        <div className="space-y-2">
+        <div className="space-y-2" role={isMulti ? 'group' : 'radiogroup'} aria-label="Answer options">
           {(card.options as QuestionOption[]).map((option) => (
             <button
               key={option.id}
               onClick={() => toggleOption(option.id)}
               disabled={submitted}
+              role={isMulti ? 'checkbox' : 'radio'}
+              aria-checked={selected.has(option.id)}
               className={cn(
                 'flex w-full items-start gap-3 rounded-lg border p-3 text-left text-sm transition-all',
                 getOptionStyle(option.id)
               )}
             >
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md border bg-muted text-xs font-bold">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md border bg-muted text-xs font-bold" aria-hidden="true">
                 {option.id}
               </span>
               <span className="pt-0.5">{option.text}</span>

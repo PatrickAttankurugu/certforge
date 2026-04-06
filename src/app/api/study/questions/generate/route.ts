@@ -3,6 +3,7 @@ import { z } from 'zod'
 import { createClient } from '@/lib/supabase/server'
 import { buildQuestionGenerationPrompt } from '@/lib/study/question-generator'
 import { checkQuestionGenerationLimit } from '@/lib/study/plan-limits'
+import { generateQuestionSchema, parseBody } from '@/lib/api/validation'
 import type { DomainId } from '@/types/study'
 import { NextResponse } from 'next/server'
 
@@ -28,7 +29,10 @@ export async function POST(request: Request) {
   const usage = await checkQuestionGenerationLimit(supabase, user.id)
   if (!usage.allowed) return NextResponse.json({ error: usage.message }, { status: 429 })
 
-  const { topic_id, domain_id, difficulty, question_type } = await request.json()
+  const body = await request.json()
+  const inputParsed = parseBody(generateQuestionSchema, body)
+  if (!inputParsed.success) return inputParsed.response
+  const { topic_id, domain_id, difficulty, question_type } = inputParsed.data
 
   // Get topic name
   let topicName = 'General AWS'

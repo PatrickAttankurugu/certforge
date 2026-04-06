@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { saveExamAnswerSchema, parseBody } from '@/lib/api/validation'
 import type { QuestionOption } from '@/types/study'
 
 // GET: fetch exam with questions for taking
@@ -24,7 +25,7 @@ export async function GET(
   // Fetch questions in order
   const { data: questions } = await supabase
     .from('questions')
-    .select('id, domain_id, topic_id, difficulty, question_text, question_type, options')
+    .select('id, domain_id, topic_id, difficulty, question_text, question_type, options, explanation')
     .in('id', exam.question_ids)
 
   // Maintain exam order
@@ -58,7 +59,10 @@ export async function PATCH(
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
-  const { question_id, selected, time_ms } = await request.json()
+  const body = await request.json()
+  const parsed = parseBody(saveExamAnswerSchema, body)
+  if (!parsed.success) return parsed.response
+  const { question_id, selected, time_ms } = parsed.data
 
   const { data: exam } = await supabase
     .from('mock_exams')

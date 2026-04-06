@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { scheduleCard, answerToRating, type FSRSCard } from '@/lib/study/fsrs'
+import { answerCardSchema, parseBody } from '@/lib/api/validation'
 import { CardState } from '@/types/study'
 
 export async function POST(
@@ -12,7 +13,10 @@ export async function POST(
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
-  const { selected_answer, time_spent_ms } = await request.json()
+  const body = await request.json()
+  const parsed = parseBody(answerCardSchema, body)
+  if (!parsed.success) return parsed.response
+  const { selected_answer, time_spent_ms } = parsed.data
 
   // Fetch the card and question
   const { data: card } = await supabase

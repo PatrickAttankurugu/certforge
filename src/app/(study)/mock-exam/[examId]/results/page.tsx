@@ -7,11 +7,21 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { Skeleton } from '@/components/ui/skeleton'
-import { ArrowLeft, CheckCircle, XCircle, Trophy, TrendingUp } from 'lucide-react'
-import { DOMAIN_NAMES, DOMAIN_COLORS, EXAM_PASS_SCORE } from '@/lib/study/constants'
+import { ArrowLeft, CheckCircle, XCircle, Trophy, TrendingUp, ChevronDown, ChevronUp } from 'lucide-react'
+import { DOMAIN_NAMES, DOMAIN_COLORS, EXAM_PASS_SCORE, DIFFICULTY_LABELS } from '@/lib/study/constants'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
-import type { DomainId, DomainBreakdown } from '@/types/study'
+import type { DomainId, DomainBreakdown, QuestionOption } from '@/types/study'
+
+interface ExamQuestion {
+  id: string
+  domain_id: DomainId
+  difficulty: number
+  question_text: string
+  question_type: 'single' | 'multi'
+  options: QuestionOption[]
+  explanation?: string
+}
 
 interface ExamResults {
   id: string
@@ -24,6 +34,9 @@ interface ExamResults {
   time_used_ms: number | null
   started_at: string
   completed_at: string | null
+  questions?: ExamQuestion[]
+  answers?: Record<string, { selected: string[]; time_ms: number }>
+  question_ids?: string[]
 }
 
 export default function ExamResultsPage({ params }: { params: Promise<{ examId: string }> }) {
@@ -150,14 +163,145 @@ export default function ExamResultsPage({ params }: { params: Promise<{ examId: 
         </CardContent>
       </Card>
 
+      {/* Answer review */}
+      {exam.questions && exam.questions.length > 0 && (
+        <AnswerReview
+          questions={exam.questions}
+          answers={exam.answers ?? {}}
+          questionIds={exam.question_ids ?? []}
+        />
+      )}
+
       <div className="flex gap-3">
         <Link href="/mock-exam">
           <Button variant="outline">Back to Exams</Button>
         </Link>
-        <Link href="/practice">
+        <Link href="/practice?focus=weak">
           <Button>Practice Weak Areas</Button>
         </Link>
       </div>
     </div>
+  )
+}
+
+function AnswerReview({
+  questions,
+  answers,
+  questionIds,
+}: {
+  questions: ExamQuestion[]
+  answers: Record<string, { selected: string[]; time_ms: number }>
+  questionIds: string[]
+}) {
+  const [expanded, setExpanded] = useState(false)
+  const [filter, setFilter] = useState<'all' | 'wrong' | 'correct'>('wrong')
+
+  const questionMap = new Map(questions.map((q) => [q.id, q]))
+
+  const reviewed = questionIds.map((qId, index) => {
+    const q = questionMap.get(qId)
+    if (!q) return null
+    const answer = answers[qId]
+    const correctIds = q.options.filter((o) => o.is_correct).map((o) => o.id)
+    const selectedIds = answer?.selected ?? []
+    const isCorrect =
+      selectedIds.length === correctIds.length &&
+      selectedIds.every((s) => correctIds.includes(s))
+    return { index, question: q, selectedIds, correctIds, isCorrect }
+  }).filter(Boolean) as {
+    index: number
+    question: ExamQuestion
+    selectedIds: string[]
+    correctIds: string[]
+    isCorrect: boolean
+  }[]
+
+  const filtered = filter === 'all' ? reviewed
+    : filter === 'wrong' ? reviewed.filter((r) => !r.isCorrect)
+    : reviewed.filter((r) => r.isCorrect)
+
+  const wrongCount = reviewed.filter((r) => !r.isCorrect).length
+
+  return (
+    <Card>
+      <CardHeader className="pb-3">
+        <div className="flex items-center justify-between">
+          <CardTitle className="text-base">
+            Answer Review ({wrongCount} incorrect)
+          </CardTitle>
+          <Button variant="ghost" size="sm" onClick={() => setExpanded(!expanded)}>
+            {expanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+            {expanded ? 'Collapse' : 'Expand'}
+          </Button>
+        </div>
+      </CardHeader>
+      {expanded && (
+        <CardContent className="space-y-4">
+          {/* Filter tabs */}
+          <div className="flex gap-2">
+            {(['wrong', 'all', 'correct'] as const).map((f) => (
+              <button
+                key={f}
+                onClick={() => setFilter(f)}
+                className={cn(
+                  'rounded-full px-3 py-1 text-xs font-medium transition-colors',
+                  filter === f
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-muted text-muted-foreground hover:bg-accent'
+                )}
+              >
+                {f === 'wrong' ? `Incorrect (${wrongCount})` : f === 'correct' ? `Correct (${reviewed.length - wrongCount})` : `All (${reviewed.length})`}
+              </button>
+            ))}
+          </div>
+
+          {filtered.map(({ index, question, selectedIds, correctIds, isCorrect }) => (
+            <div key={question.id} className={cn('rounded-lg border p-4 space-y-3', isCorrect ? 'border-green-500/20' : 'border-red-500/20')}>
+              <div className="flex items-start justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-mono text-muted-foreground">Q{index + 1}</span>
+                  {isCorrect
+                    ? <CheckCircle className="h-4 w-4 text-green-500" />
+                    : <XCircle className="h-4 w-4 text-red-500" />}
+                </div>
+                <div className="flex gap-1">
+                  <Badge variant="outline" className="text-xs">{DOMAIN_NAMES[question.domain_id]}</Badge>
+                  <Badge variant="secondary" className="text-xs">{DIFFICULTY_LABELS[question.difficulty]}</Badge>
+                </div>
+              </div>
+
+              <p className="text-sm leading-relaxed">{question.question_text}</p>
+
+              <div className="space-y-1.5">
+                {question.options.map((opt) => {
+                  const wasSelected = selectedIds.includes(opt.id)
+                  const isOptionCorrect = correctIds.includes(opt.id)
+                  return (
+                    <div
+                      key={opt.id}
+                      className={cn(
+                        'flex items-start gap-2 rounded-md border px-3 py-2 text-xs',
+                        isOptionCorrect && 'border-green-500/50 bg-green-500/10',
+                        wasSelected && !isOptionCorrect && 'border-red-500/50 bg-red-500/10',
+                        !wasSelected && !isOptionCorrect && 'border-border opacity-60'
+                      )}
+                    >
+                      <span className="font-bold shrink-0 w-5">{opt.id}</span>
+                      <span className="flex-1">{opt.text}</span>
+                      {wasSelected && !isOptionCorrect && <XCircle className="h-3.5 w-3.5 text-red-500 shrink-0" />}
+                      {isOptionCorrect && <CheckCircle className="h-3.5 w-3.5 text-green-500 shrink-0" />}
+                    </div>
+                  )
+                })}
+              </div>
+
+              {question.explanation && (
+                <p className="text-xs text-muted-foreground leading-relaxed border-t pt-2 mt-2">{question.explanation}</p>
+              )}
+            </div>
+          ))}
+        </CardContent>
+      )}
+    </Card>
   )
 }

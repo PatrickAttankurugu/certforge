@@ -9,6 +9,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { Progress } from '@/components/ui/progress'
 import { cn } from '@/lib/utils'
 import { Clock, ChevronLeft, ChevronRight, Flag, AlertTriangle } from 'lucide-react'
+import { ConfirmDialog } from '@/components/ui/confirm-dialog'
 import { EXAM_TIME_LIMIT_MS, DIFFICULTY_LABELS, DOMAIN_NAMES } from '@/lib/study/constants'
 import type { DomainId, QuestionOption } from '@/types/study'
 
@@ -218,11 +219,13 @@ export default function TakeExamPage({ params }: { params: Promise<{ examId: str
 
             <p className="text-sm leading-relaxed whitespace-pre-wrap">{currentQuestion.question_text}</p>
 
-            <div className="space-y-2">
+            <div className="space-y-2" role={currentQuestion.question_type === 'multi' ? 'group' : 'radiogroup'} aria-label="Answer options">
               {currentQuestion.options.map((option) => (
                 <button
                   key={option.id}
                   onClick={() => toggleOption(option.id)}
+                  role={currentQuestion.question_type === 'multi' ? 'checkbox' : 'radio'}
+                  aria-checked={selected.has(option.id)}
                   className={cn(
                     'flex w-full items-start gap-3 rounded-lg border p-3 text-left text-sm transition-all',
                     selected.has(option.id)
@@ -230,7 +233,7 @@ export default function TakeExamPage({ params }: { params: Promise<{ examId: str
                       : 'border-border hover:border-muted-foreground/50 cursor-pointer'
                   )}
                 >
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md border bg-muted text-xs font-bold">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md border bg-muted text-xs font-bold" aria-hidden="true">
                     {option.id}
                   </span>
                   <span className="pt-0.5">{option.text}</span>
@@ -250,10 +253,18 @@ export default function TakeExamPage({ params }: { params: Promise<{ examId: str
 
         <div className="flex gap-2">
           {currentIndex === totalQuestions - 1 ? (
-            <Button onClick={handleFinish} disabled={submitting} variant="destructive">
-              <Flag className="h-4 w-4 mr-2" />
-              {submitting ? 'Submitting...' : 'Finish Exam'}
-            </Button>
+            <ConfirmDialog
+              trigger={
+                <Button variant="destructive" disabled={submitting}>
+                  <Flag className="h-4 w-4 mr-2" />
+                  {submitting ? 'Submitting...' : 'Finish Exam'}
+                </Button>
+              }
+              title="Submit exam?"
+              description={`You have answered ${answeredCount} of ${totalQuestions} questions. ${totalQuestions - answeredCount > 0 ? `${totalQuestions - answeredCount} unanswered questions will be marked incorrect.` : 'All questions answered.'}`}
+              confirmLabel="Submit Exam"
+              onConfirm={handleFinish}
+            />
           ) : (
             <Button onClick={goNext}>
               Next
@@ -267,7 +278,7 @@ export default function TakeExamPage({ params }: { params: Promise<{ examId: str
       <Card>
         <CardContent className="pt-4">
           <p className="text-xs text-muted-foreground mb-2">Question Navigator</p>
-          <div className="flex flex-wrap gap-1">
+          <div className="flex flex-wrap gap-1" role="navigation" aria-label="Question navigator">
             {exam.questions.map((q, i) => (
               <button
                 key={q.id}

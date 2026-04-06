@@ -1,13 +1,13 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams, useRouter } from 'next/navigation'
 import { QuestionCard } from '@/components/study/question-card'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Skeleton } from '@/components/ui/skeleton'
-import { BookOpen, RefreshCw, CheckCircle, XCircle, Lightbulb, Filter } from 'lucide-react'
+import { BookOpen, RefreshCw, CheckCircle, XCircle, Lightbulb, Filter, AlertTriangle } from 'lucide-react'
 import { DOMAIN_NAMES, DOMAIN_COLORS } from '@/lib/study/constants'
 import type { DueCard, DomainId } from '@/types/study'
 import { Suspense } from 'react'
@@ -16,7 +16,9 @@ const DOMAINS: DomainId[] = ['secure', 'resilient', 'performant', 'cost']
 
 function PracticeContent() {
   const searchParams = useSearchParams()
+  const router = useRouter()
   const focusDomain = searchParams.get('domain')
+  const focusWeak = searchParams.get('focus') === 'weak'
 
   const [cards, setCards] = useState<DueCard[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -29,11 +31,25 @@ function PracticeContent() {
   } | null>(null)
   const [explaining, setExplaining] = useState(false)
   const [aiExplanation, setAiExplanation] = useState('')
+  const [weakDomains, setWeakDomains] = useState<string[]>([])
 
   const fetchCards = useCallback(async () => {
     setLoading(true)
+
+    // If focusing on weak areas, fetch weak topics first
+    let targetDomain = focusDomain
+    if (focusWeak && !focusDomain) {
+      const weakRes = await fetch('/api/study/weak-areas')
+      const weakData = await weakRes.json()
+      if (Array.isArray(weakData) && weakData.length > 0) {
+        const domains = [...new Set(weakData.map((w: { domain_id: string }) => w.domain_id))]
+        setWeakDomains(domains)
+        targetDomain = domains[0] // Start with weakest domain
+      }
+    }
+
     const params = new URLSearchParams({ limit: '20' })
-    if (focusDomain) params.set('domain', focusDomain)
+    if (targetDomain) params.set('domain', targetDomain)
 
     const res = await fetch(`/api/study/cards?${params}`)
     const data = await res.json()
@@ -46,7 +62,7 @@ function PracticeContent() {
       await fetch('/api/study/cards', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ domain_id: focusDomain, count: 20 }),
+        body: JSON.stringify({ domain_id: targetDomain, count: 20 }),
       })
       const retry = await fetch(`/api/study/cards?${params}`)
       const retryData = await retry.json()
@@ -54,7 +70,7 @@ function PracticeContent() {
       setCurrentIndex(0)
     }
     setLoading(false)
-  }, [focusDomain])
+  }, [focusDomain, focusWeak])
 
   useEffect(() => { fetchCards() }, [fetchCards])
 
@@ -140,14 +156,11 @@ function PracticeContent() {
   }
 
   const handleDomainFilter = (domain: DomainId | null) => {
-    const params = new URLSearchParams(window.location.search)
+    const params = new URLSearchParams()
     if (domain) {
       params.set('domain', domain)
-    } else {
-      params.delete('domain')
     }
-    window.history.replaceState(null, '', `?${params.toString()}`)
-    window.location.reload()
+    router.push(`/practice${params.toString() ? `?${params}` : ''}`)
   }
 
   return (
@@ -172,9 +185,17 @@ function PracticeContent() {
         </div>
       </div>
 
+      {/* Weak areas banner */}
+      {focusWeak && weakDomains.length > 0 && (
+        <div className="flex items-center gap-2 rounded-lg border border-amber-500/30 bg-amber-500/5 p-3 text-sm">
+          <AlertTriangle className="h-4 w-4 text-amber-500 shrink-0" />
+          <span>Focusing on your weak areas. Questions are targeted at domains where you need improvement.</span>
+        </div>
+      )}
+
       {/* Domain filter */}
-      <div className="flex flex-wrap items-center gap-2">
-        <Filter className="h-3.5 w-3.5 text-muted-foreground" />
+      <div className="flex flex-wrap items-center gap-2" role="navigation" aria-label="Domain filter">
+        <Filter className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />
         <button
           onClick={() => handleDomainFilter(null)}
           className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${

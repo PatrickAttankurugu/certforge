@@ -16,6 +16,7 @@ import {
 import { cn } from '@/lib/utils'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
+import { ConfirmDialog } from '@/components/ui/confirm-dialog'
 import type { Profile } from '@/types/study'
 
 const navItems = [
@@ -62,13 +63,14 @@ export function StudySidebar({ user }: StudySidebarProps) {
       </Link>
 
       {/* Nav */}
-      <nav className="flex-1 space-y-0.5 p-3">
+      <nav className="flex-1 space-y-0.5 p-3" aria-label="Main navigation">
         {navItems.map(({ href, label, icon: Icon }) => {
           const isActive = pathname === href || pathname.startsWith(href + '/')
           return (
             <Link
               key={href}
               href={href}
+              aria-current={isActive ? 'page' : undefined}
               className={cn(
                 'flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors',
                 isActive
@@ -76,7 +78,7 @@ export function StudySidebar({ user }: StudySidebarProps) {
                   : 'text-muted-foreground hover:bg-accent/50 hover:text-foreground'
               )}
             >
-              <Icon className="h-4 w-4" />
+              <Icon className="h-4 w-4" aria-hidden="true" />
               {label}
             </Link>
           )
@@ -103,13 +105,18 @@ export function StudySidebar({ user }: StudySidebarProps) {
             </Link>
           )
         })}
-        <button
-          onClick={handleSignOut}
-          className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent/50 hover:text-foreground transition-colors"
-        >
-          <LogOut className="h-4 w-4" />
-          Sign out
-        </button>
+        <ConfirmDialog
+          trigger={
+            <button className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent/50 hover:text-foreground transition-colors">
+              <LogOut className="h-4 w-4" />
+              Sign out
+            </button>
+          }
+          title="Sign out?"
+          description="You'll need to sign in again to continue studying."
+          confirmLabel="Sign Out"
+          onConfirm={handleSignOut}
+        />
 
         {/* User */}
         <div className="flex items-center gap-3 px-3 py-2 mt-2">

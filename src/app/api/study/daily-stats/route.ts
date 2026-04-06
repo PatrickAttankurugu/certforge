@@ -13,7 +13,7 @@ export async function GET() {
     .select('*')
     .eq('user_id', user.id)
     .eq('session_date', today)
-    .single()
+    .maybeSingle()
 
   return NextResponse.json(session ?? {
     questions_answered: 0,

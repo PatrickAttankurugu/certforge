@@ -4,9 +4,12 @@ import { useState, useEffect } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { Skeleton } from '@/components/ui/skeleton'
+import { ConfirmDialog } from '@/components/ui/confirm-dialog'
 import { Settings, LogOut, Calendar, Target } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
 
 interface ProfileData {
   full_name: string | null
@@ -57,7 +60,7 @@ export default function SettingsPage() {
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) return
 
-    await supabase
+    const { error } = await supabase
       .from('user_study_profiles')
       .update({
         target_exam_date: examDate || null,
@@ -66,6 +69,11 @@ export default function SettingsPage() {
       .eq('user_id', user.id)
 
     setSaving(false)
+    if (error) {
+      toast.error('Failed to save settings')
+    } else {
+      toast.success('Settings saved')
+    }
   }
 
   const handleSignOut = async () => {
@@ -74,7 +82,13 @@ export default function SettingsPage() {
     router.push('/login')
   }
 
-  if (loading) return null
+  if (loading) return (
+    <div className="p-6 max-w-2xl mx-auto space-y-6">
+      <Skeleton className="h-8 w-32" />
+      <Skeleton className="h-40" />
+      <Skeleton className="h-48" />
+    </div>
+  )
 
   return (
     <div className="p-6 max-w-2xl mx-auto space-y-6">
@@ -145,10 +159,18 @@ export default function SettingsPage() {
       {/* Sign out */}
       <Card>
         <CardContent className="pt-4">
-          <Button variant="destructive" onClick={handleSignOut}>
-            <LogOut className="h-4 w-4 mr-2" />
-            Sign Out
-          </Button>
+          <ConfirmDialog
+            trigger={
+              <Button variant="destructive">
+                <LogOut className="h-4 w-4 mr-2" />
+                Sign Out
+              </Button>
+            }
+            title="Sign out?"
+            description="You'll need to sign in again to continue studying."
+            confirmLabel="Sign Out"
+            onConfirm={handleSignOut}
+          />
         </CardContent>
       </Card>
     </div>

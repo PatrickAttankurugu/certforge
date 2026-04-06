@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { selectDifficulty, selectDomainWeighted } from '@/lib/study/adaptive-difficulty'
 import { checkDailyQuestionLimit } from '@/lib/study/plan-limits'
+import { assignCardsSchema, parseBody } from '@/lib/api/validation'
 import type { DomainProgress } from '@/types/study'
 
 // GET: Fetch due cards for the current user
@@ -33,7 +34,10 @@ export async function POST(request: Request) {
   const usage = await checkDailyQuestionLimit(supabase, user.id)
   if (!usage.allowed) return NextResponse.json({ error: usage.message }, { status: 429 })
 
-  const { domain_id, count = 10 } = await request.json()
+  const body = await request.json()
+  const parsed = parseBody(assignCardsSchema, body)
+  if (!parsed.success) return parsed.response
+  const { domain_id, count } = parsed.data
 
   // Get user's domain progress for adaptive difficulty
   const { data: domainProgress } = await supabase

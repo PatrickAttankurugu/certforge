@@ -1,20 +1,24 @@
 import { streamText, gateway } from 'ai'
-import { after } from 'next/server'
+import { after, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { buildTutorSystemPrompt } from '@/lib/study/tutor-prompt'
 import { checkTutorLimit } from '@/lib/study/plan-limits'
+import { tutorSchema, parseBody } from '@/lib/api/validation'
 import type { DomainId, WeakArea } from '@/types/study'
 
 export async function POST(request: Request) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return new Response('Unauthorized', { status: 401 })
+  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
   const usage = await checkTutorLimit(supabase, user.id)
-  if (!usage.allowed) return new Response(JSON.stringify({ error: usage.message }), { status: 429 })
+  if (!usage.allowed) return NextResponse.json({ error: usage.message }, { status: 429 })
 
-  const { messages, topic_id, domain_id, conversation_id } = await request.json()
+  const body = await request.json()
+  const parsed = parseBody(tutorSchema, body)
+  if (!parsed.success) return parsed.response
+  const { messages, topic_id, domain_id, conversation_id } = parsed.data
 
   // Get topic name and user's weak areas for context
   let topicName: string | null = null
