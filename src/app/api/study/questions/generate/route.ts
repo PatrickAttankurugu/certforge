@@ -2,6 +2,7 @@ import { generateText, Output, gateway } from 'ai'
 import { z } from 'zod'
 import { createClient } from '@/lib/supabase/server'
 import { buildQuestionGenerationPrompt } from '@/lib/study/question-generator'
+import { checkQuestionGenerationLimit } from '@/lib/study/plan-limits'
 import type { DomainId } from '@/types/study'
 import { NextResponse } from 'next/server'
 
@@ -23,6 +24,9 @@ export async function POST(request: Request) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
+  const usage = await checkQuestionGenerationLimit(supabase, user.id)
+  if (!usage.allowed) return NextResponse.json({ error: usage.message }, { status: 429 })
 
   const { topic_id, domain_id, difficulty, question_type } = await request.json()
 

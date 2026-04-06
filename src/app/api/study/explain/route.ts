@@ -1,12 +1,16 @@
 import { streamText, gateway } from 'ai'
 import { createClient } from '@/lib/supabase/server'
 import { buildExplanationPrompt } from '@/lib/study/explanation-prompt'
+import { checkExplanationLimit } from '@/lib/study/plan-limits'
 import type { DomainId, QuestionOption } from '@/types/study'
 
 export async function POST(request: Request) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return new Response('Unauthorized', { status: 401 })
+
+  const usage = await checkExplanationLimit(supabase, user.id)
+  if (!usage.allowed) return new Response(JSON.stringify({ error: usage.message }), { status: 429 })
 
   const { question_id, selected_answer } = await request.json()
 

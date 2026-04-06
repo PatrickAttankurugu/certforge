@@ -7,9 +7,12 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Skeleton } from '@/components/ui/skeleton'
-import { BookOpen, RefreshCw, CheckCircle, XCircle, Lightbulb } from 'lucide-react'
-import type { DueCard } from '@/types/study'
+import { BookOpen, RefreshCw, CheckCircle, XCircle, Lightbulb, Filter } from 'lucide-react'
+import { DOMAIN_NAMES, DOMAIN_COLORS } from '@/lib/study/constants'
+import type { DueCard, DomainId } from '@/types/study'
 import { Suspense } from 'react'
+
+const DOMAINS: DomainId[] = ['secure', 'resilient', 'performant', 'cost']
 
 function PracticeContent() {
   const searchParams = useSearchParams()
@@ -136,6 +139,17 @@ function PracticeContent() {
     )
   }
 
+  const handleDomainFilter = (domain: DomainId | null) => {
+    const params = new URLSearchParams(window.location.search)
+    if (domain) {
+      params.set('domain', domain)
+    } else {
+      params.delete('domain')
+    }
+    window.history.replaceState(null, '', `?${params.toString()}`)
+    window.location.reload()
+  }
+
   return (
     <div className="p-6 max-w-3xl mx-auto space-y-4">
       {/* Session header */}
@@ -156,6 +170,31 @@ function PracticeContent() {
             {sessionStats.wrong}
           </Badge>
         </div>
+      </div>
+
+      {/* Domain filter */}
+      <div className="flex flex-wrap items-center gap-2">
+        <Filter className="h-3.5 w-3.5 text-muted-foreground" />
+        <button
+          onClick={() => handleDomainFilter(null)}
+          className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+            !focusDomain ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground hover:bg-accent'
+          }`}
+        >
+          All Domains
+        </button>
+        {DOMAINS.map((d) => (
+          <button
+            key={d}
+            onClick={() => handleDomainFilter(d)}
+            className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+              focusDomain === d ? 'text-white' : 'bg-muted text-muted-foreground hover:bg-accent'
+            }`}
+            style={focusDomain === d ? { backgroundColor: DOMAIN_COLORS[d] } : undefined}
+          >
+            {DOMAIN_NAMES[d].replace('Design ', '').replace(' Architectures', '')}
+          </button>
+        ))}
       </div>
 
       {/* Question */}

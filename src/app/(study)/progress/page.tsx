@@ -8,6 +8,10 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { TrendingUp, Target, Flame, BookOpen, Award, AlertTriangle } from 'lucide-react'
 import { DOMAIN_NAMES, DOMAIN_COLORS, EXAM_PASS_SCORE } from '@/lib/study/constants'
 import { cn } from '@/lib/utils'
+import {
+  BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer,
+  RadarChart, PolarGrid, PolarAngleAxis, Radar,
+} from 'recharts'
 import type { DomainId, DomainProgress, TopicProgress, ScorePrediction, StudySession } from '@/types/study'
 
 interface ProgressData {
@@ -138,6 +142,60 @@ export default function ProgressPage() {
           })}
         </CardContent>
       </Card>
+
+      {/* Charts row */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Study activity bar chart */}
+        {data.recent_sessions.length > 0 && (
+          <Card>
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base">Study Activity (Last 14 Days)</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ResponsiveContainer width="100%" height={200}>
+                <BarChart data={data.recent_sessions.slice(0, 14).reverse().map((s) => ({
+                  date: new Date(s.session_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+                  questions: s.questions_answered,
+                  correct: s.questions_correct,
+                }))}>
+                  <XAxis dataKey="date" tick={{ fontSize: 10 }} />
+                  <YAxis tick={{ fontSize: 10 }} />
+                  <Tooltip
+                    contentStyle={{ backgroundColor: 'hsl(var(--popover))', border: '1px solid hsl(var(--border))', borderRadius: 8, fontSize: 12 }}
+                    labelStyle={{ color: 'hsl(var(--foreground))' }}
+                  />
+                  <Bar dataKey="questions" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} name="Answered" />
+                  <Bar dataKey="correct" fill="#22c55e" radius={[4, 4, 0, 0]} name="Correct" />
+                </BarChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Domain radar chart */}
+        {data.domain_progress.length > 0 && (
+          <Card>
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base">Domain Mastery Radar</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ResponsiveContainer width="100%" height={200}>
+                <RadarChart data={domains.map((id) => {
+                  const p = data.domain_progress.find((d) => d.domain_id === id)
+                  return {
+                    domain: DOMAIN_NAMES[id].replace('Design ', '').replace(' Architectures', ''),
+                    accuracy: Math.round((p?.accuracy ?? 0) * 100),
+                  }
+                })}>
+                  <PolarGrid stroke="hsl(var(--border))" />
+                  <PolarAngleAxis dataKey="domain" tick={{ fontSize: 10, fill: 'hsl(var(--muted-foreground))' }} />
+                  <Radar dataKey="accuracy" stroke="hsl(var(--primary))" fill="hsl(var(--primary))" fillOpacity={0.2} />
+                </RadarChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
+        )}
+      </div>
 
       {/* Weak areas */}
       {weakTopics.length > 0 && (

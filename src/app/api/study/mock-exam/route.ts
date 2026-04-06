@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { buildMockExam } from '@/lib/study/exam-builder'
 import { EXAM_TIME_LIMIT_MS, EXAM_TOTAL_QUESTIONS } from '@/lib/study/constants'
+import { checkMockExamLimit } from '@/lib/study/plan-limits'
 import type { Question } from '@/types/study'
 
 // GET: list user's mock exams
@@ -25,6 +26,10 @@ export async function POST() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
+  // Check plan limits
+  const usage = await checkMockExamLimit(supabase, user.id)
+  if (!usage.allowed) return NextResponse.json({ error: usage.message }, { status: 429 })
 
   // Check for in-progress exam
   const { data: existing } = await supabase

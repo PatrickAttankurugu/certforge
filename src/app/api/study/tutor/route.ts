@@ -1,6 +1,9 @@
 import { streamText, gateway } from 'ai'
+import { after } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import { buildTutorSystemPrompt } from '@/lib/study/tutor-prompt'
+import { checkTutorLimit } from '@/lib/study/plan-limits'
 import type { DomainId, WeakArea } from '@/types/study'
 
 export async function POST(request: Request) {
@@ -8,7 +11,10 @@ export async function POST(request: Request) {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return new Response('Unauthorized', { status: 401 })
 
-  const { messages, topic_id, domain_id } = await request.json()
+  const usage = await checkTutorLimit(supabase, user.id)
+  if (!usage.allowed) return new Response(JSON.stringify({ error: usage.message }), { status: 429 })
+
+  const { messages, topic_id, domain_id, conversation_id } = await request.json()
 
   // Get topic name and user's weak areas for context
   let topicName: string | null = null
@@ -61,6 +67,46 @@ export async function POST(request: Request) {
     system: systemPrompt,
     messages,
     maxOutputTokens: 1000,
+  })
+
+  // Save conversation in background after response streams
+  after(async () => {
+    const fullText = await result.text
+    const admin = createAdminClient()
+    const userMessage = messages[messages.length - 1]
+
+    if (conversation_id) {
+      // Append to existing conversation
+      const { data: existing } = await admin
+        .from('ai_conversations')
+        .select('messages')
+        .eq('id', conversation_id)
+        .single()
+
+      const existingMessages = (existing?.messages ?? []) as Array<Record<string, string>>
+      existingMessages.push(
+        { role: 'user', content: userMessage?.content ?? '', timestamp: new Date().toISOString() },
+        { role: 'assistant', content: fullText, timestamp: new Date().toISOString() }
+      )
+
+      await admin
+        .from('ai_conversations')
+        .update({ messages: existingMessages, updated_at: new Date().toISOString() })
+        .eq('id', conversation_id)
+    } else {
+      // Create new conversation
+      await admin
+        .from('ai_conversations')
+        .insert({
+          user_id: user.id,
+          topic_id: topic_id ?? null,
+          conversation_type: 'tutoring',
+          messages: [
+            { role: 'user', content: userMessage?.content ?? '', timestamp: new Date().toISOString() },
+            { role: 'assistant', content: fullText, timestamp: new Date().toISOString() },
+          ],
+        })
+    }
   })
 
   return result.toUIMessageStreamResponse()

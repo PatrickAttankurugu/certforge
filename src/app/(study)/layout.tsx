@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { StudySidebar } from '@/components/study/study-sidebar'
+import { MobileHeader } from '@/components/study/mobile-header'
 import { QueryProvider } from '@/components/providers/query-provider'
 import type { Profile } from '@/types/study'
 
@@ -42,7 +43,10 @@ export default async function StudyLayout({
         <div className="hidden md:flex">
           <StudySidebar user={sidebarUser} />
         </div>
-        <main className="flex-1 overflow-y-auto">{children}</main>
+        <div className="flex flex-1 flex-col overflow-hidden">
+          <MobileHeader user={sidebarUser} />
+          <main className="flex-1 overflow-y-auto">{children}</main>
+        </div>
       </div>
     </QueryProvider>
   )
