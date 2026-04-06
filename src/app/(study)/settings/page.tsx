@@ -6,12 +6,13 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Skeleton } from '@/components/ui/skeleton'
 import { ConfirmDialog } from '@/components/ui/confirm-dialog'
-import { Settings, LogOut, Calendar, Target, Palette, Gift } from 'lucide-react'
+import { Settings, LogOut, Calendar, Target, Palette, Gift, Globe } from 'lucide-react'
 import { ThemeSwitcher } from '@/components/ui/theme-switcher'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 import Link from 'next/link'
+import { LOCALE_NAMES, type Locale } from '@/lib/i18n/translations'
 
 interface ProfileData {
   full_name: string | null
@@ -130,6 +131,33 @@ export default function SettingsPage() {
         </CardHeader>
         <CardContent>
           <ThemeSwitcher />
+        </CardContent>
+      </Card>
+
+      {/* Language */}
+      <Card>
+        <CardHeader className="pb-3">
+          <CardTitle className="text-base flex items-center gap-2">
+            <Globe className="h-4 w-4" />
+            Language
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-muted-foreground mb-3">
+            Choose your preferred language. Additional translations coming soon.
+          </p>
+          <select
+            defaultValue={typeof window !== 'undefined' ? (localStorage.getItem('certforge-locale') ?? 'en') : 'en'}
+            onChange={(e) => {
+              localStorage.setItem('certforge-locale', e.target.value)
+              toast.success(`Language set to ${LOCALE_NAMES[e.target.value as Locale]}`)
+            }}
+            className="rounded-lg border bg-background px-3 py-2 text-sm w-full focus:outline-none focus:ring-2 focus:ring-ring"
+          >
+            {(Object.entries(LOCALE_NAMES) as [Locale, string][]).map(([code, name]) => (
+              <option key={code} value={code}>{name}</option>
+            ))}
+          </select>
         </CardContent>
       </Card>
 
