@@ -6,7 +6,8 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Skeleton } from '@/components/ui/skeleton'
 import { ConfirmDialog } from '@/components/ui/confirm-dialog'
-import { Settings, LogOut, Calendar, Target } from 'lucide-react'
+import { Settings, LogOut, Calendar, Target, Palette } from 'lucide-react'
+import { ThemeSwitcher } from '@/components/ui/theme-switcher'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
@@ -115,6 +116,19 @@ export default function SettingsPage() {
             <p className="text-sm text-muted-foreground">Plan</p>
             <Badge className="capitalize">{profile?.plan ?? 'free'}</Badge>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Appearance */}
+      <Card>
+        <CardHeader className="pb-3">
+          <CardTitle className="text-base flex items-center gap-2">
+            <Palette className="h-4 w-4" />
+            Appearance
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ThemeSwitcher />
         </CardContent>
       </Card>
 

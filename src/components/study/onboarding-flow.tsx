@@ -16,6 +16,8 @@ import {
   GraduationCap,
 } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
+import { LottieAnimation } from '@/components/ui/lottie-animation'
+import { LOTTIE_URLS } from '@/lib/animations'
 import { toast } from 'sonner'
 
 interface OnboardingFlowProps {
@@ -223,8 +225,12 @@ export function OnboardingFlow({ userId, userName }: OnboardingFlowProps) {
           {/* Step 3: Ready — Hooked: Action + Hormozi: Urgency */}
           {step === 3 && (
             <div className="text-center space-y-4 py-4">
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-green-500/10 mx-auto">
-                <CheckCircle className="h-8 w-8 text-green-500" />
+              <div className="relative h-20 w-20 mx-auto">
+                <LottieAnimation
+                  url={LOTTIE_URLS.success}
+                  loop={false}
+                  className="h-20 w-20"
+                />
               </div>
               <div>
                 <h2 className="text-xl font-bold">You&apos;re all set!</h2>

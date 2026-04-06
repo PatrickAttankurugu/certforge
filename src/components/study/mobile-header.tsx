@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { Menu, BookOpen, LogOut } from 'lucide-react'
+import { Menu, BookOpen, LogOut, Sparkles } from 'lucide-react'
 import {
   LayoutDashboard,
   RotateCcw,
@@ -24,6 +24,7 @@ import {
 import { cn } from '@/lib/utils'
 import { createClient } from '@/lib/supabase/client'
 import { ConfirmDialog } from '@/components/ui/confirm-dialog'
+import { ThemeSwitcher } from '@/components/ui/theme-switcher'
 import type { Profile } from '@/types/study'
 
 const navItems = [
@@ -72,8 +73,8 @@ export function MobileHeader({ user }: MobileHeaderProps) {
           <SheetTitle className="sr-only">Navigation</SheetTitle>
           {/* Logo */}
           <div className="flex h-14 items-center gap-2 border-b border-border px-4">
-            <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary shadow-sm shadow-primary/40">
-              <span className="text-xs font-bold text-primary-foreground">CF</span>
+            <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary shadow-sm shadow-primary/30">
+              <Sparkles className="h-3.5 w-3.5 text-primary-foreground" />
             </div>
             <span className="font-semibold text-foreground">CertForge</span>
           </div>
@@ -101,6 +102,11 @@ export function MobileHeader({ user }: MobileHeaderProps) {
               )
             })}
           </nav>
+
+          {/* Theme */}
+          <div className="border-t border-border p-3">
+            <ThemeSwitcher compact />
+          </div>
 
           {/* Bottom */}
           <div className="border-t border-border p-3 space-y-0.5">

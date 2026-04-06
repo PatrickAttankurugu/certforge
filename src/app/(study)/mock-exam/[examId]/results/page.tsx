@@ -9,6 +9,8 @@ import { Progress } from '@/components/ui/progress'
 import { Skeleton } from '@/components/ui/skeleton'
 import { ArrowLeft, CheckCircle, XCircle, Trophy, TrendingUp, ChevronDown, ChevronUp } from 'lucide-react'
 import { DOMAIN_NAMES, DOMAIN_COLORS, EXAM_PASS_SCORE, DIFFICULTY_LABELS } from '@/lib/study/constants'
+import { LottieAnimation } from '@/components/ui/lottie-animation'
+import { LOTTIE_URLS } from '@/lib/animations'
 import { ShareScoreCard } from '@/components/study/share-score-card'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
@@ -90,12 +92,25 @@ export default function ExamResultsPage({ params }: { params: Promise<{ examId: 
       </div>
 
       {/* Score hero card */}
-      <Card className={passed ? 'border-green-500/50' : 'border-red-500/50'}>
-        <CardContent className="pt-6 pb-6 text-center space-y-3">
+      <Card className={cn('relative overflow-hidden', passed ? 'border-green-500/50' : 'border-red-500/50')}>
+        {passed && (
+          <div className="absolute inset-0 pointer-events-none">
+            <LottieAnimation
+              url={LOTTIE_URLS.confetti}
+              loop={false}
+              className="absolute inset-0 w-full h-full opacity-60"
+            />
+          </div>
+        )}
+        <CardContent className="pt-6 pb-6 text-center space-y-3 relative">
           {passed ? (
-            <Trophy className="h-14 w-14 mx-auto text-green-500" />
+            <div className="h-16 w-16 mx-auto rounded-full bg-green-500/10 flex items-center justify-center">
+              <Trophy className="h-8 w-8 text-green-500" />
+            </div>
           ) : (
-            <XCircle className="h-14 w-14 mx-auto text-red-500" />
+            <div className="h-16 w-16 mx-auto rounded-full bg-red-500/10 flex items-center justify-center">
+              <XCircle className="h-8 w-8 text-red-500" />
+            </div>
           )}
           <div>
             <p className="text-4xl font-bold font-mono">{exam.score ?? 0}</p>
@@ -110,7 +125,7 @@ export default function ExamResultsPage({ params }: { params: Promise<{ examId: 
       </Card>
 
       {/* Stats */}
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <Card>
           <CardContent className="pt-4 pb-3 text-center">
             <p className="text-2xl font-bold">{exam.correct_count ?? 0}<span className="text-sm text-muted-foreground font-normal">/{exam.total_questions}</span></p>

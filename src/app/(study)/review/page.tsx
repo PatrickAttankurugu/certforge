@@ -67,25 +67,29 @@ export default function ReviewPage() {
     return (
       <div className="p-6 max-w-3xl mx-auto">
         <Card>
-          <CardContent className="pt-6 text-center space-y-4">
+          <CardContent className="pt-8 pb-8 text-center space-y-4">
             {reviewed > 0 ? (
               <>
-                <PartyPopper className="h-12 w-12 mx-auto text-green-500" />
+                <div className="h-16 w-16 mx-auto rounded-full bg-green-500/10 flex items-center justify-center">
+                  <PartyPopper className="h-8 w-8 text-green-500" />
+                </div>
                 <h2 className="text-lg font-semibold">All caught up!</h2>
                 <p className="text-sm text-muted-foreground">
-                  You reviewed {reviewed} card{reviewed === 1 ? '' : 's'} this session.
+                  You reviewed {reviewed} card{reviewed === 1 ? '' : 's'} this session. Great work!
                 </p>
               </>
             ) : (
               <>
-                <CheckCircle className="h-12 w-12 mx-auto text-green-500" />
+                <div className="h-16 w-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center">
+                  <CheckCircle className="h-8 w-8 text-primary" />
+                </div>
                 <h2 className="text-lg font-semibold">No cards due for review</h2>
                 <p className="text-sm text-muted-foreground">
                   Practice new questions to build your review queue.
                 </p>
               </>
             )}
-            <Button variant="outline" onClick={fetchDueCards}>
+            <Button variant="outline" onClick={fetchDueCards} className="shadow-sm">
               <RotateCcw className="h-4 w-4 mr-2" />
               Check again
             </Button>

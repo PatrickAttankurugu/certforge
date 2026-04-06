@@ -4,8 +4,25 @@ import { DOMAIN_NAMES, DOMAIN_COLORS, DOMAIN_WEIGHTS } from '@/lib/study/constan
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
+import Image from 'next/image'
 import Link from 'next/link'
+import { STOCK_IMAGES } from '@/lib/animations'
+import { Shield, BarChart3, Zap, Target } from 'lucide-react'
 import type { DomainId, DomainProgress } from '@/types/study'
+
+const DOMAIN_ICONS: Record<DomainId, typeof Shield> = {
+  secure: Shield,
+  resilient: BarChart3,
+  performant: Zap,
+  cost: Target,
+}
+
+const DOMAIN_IMAGES: Record<DomainId, string> = {
+  secure: STOCK_IMAGES.networkVisualization,
+  resilient: STOCK_IMAGES.dataCenter,
+  performant: STOCK_IMAGES.techAbstract,
+  cost: STOCK_IMAGES.cloudComputing,
+}
 
 export const metadata = { title: 'Domains | CertForge' }
 
@@ -40,19 +57,35 @@ export default async function DomainsPage() {
 
           return (
             <Link key={id} href={`/domains/${id}`}>
-              <Card className="hover:border-primary/50 transition-colors cursor-pointer h-full">
-                <CardHeader className="pb-2">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 rounded-full" style={{ backgroundColor: DOMAIN_COLORS[id] }} />
-                      <CardTitle className="text-base">{DOMAIN_NAMES[id]}</CardTitle>
-                    </div>
-                    <Badge variant="secondary" className="text-xs">
+              <Card className="hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 cursor-pointer h-full overflow-hidden group">
+                {/* Domain image banner */}
+                <div className="relative h-24 overflow-hidden">
+                  <Image
+                    src={DOMAIN_IMAGES[id]}
+                    alt={DOMAIN_NAMES[id]}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
+                  <div className="absolute bottom-2 left-3 flex items-center gap-2">
+                    {(() => {
+                      const DomainIcon = DOMAIN_ICONS[id]
+                      return (
+                        <div className="h-8 w-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: DOMAIN_COLORS[id] + '30' }}>
+                          <DomainIcon className="h-4 w-4" style={{ color: DOMAIN_COLORS[id] }} />
+                        </div>
+                      )
+                    })()}
+                    <CardTitle className="text-sm">{DOMAIN_NAMES[id]}</CardTitle>
+                  </div>
+                  <div className="absolute top-2 right-2">
+                    <Badge variant="secondary" className="text-[10px] bg-card/80 backdrop-blur-sm">
                       {Math.round(weight * 100)}% of exam
                     </Badge>
                   </div>
-                </CardHeader>
-                <CardContent className="space-y-3">
+                </div>
+                <CardContent className="space-y-3 pt-3">
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">{seen} questions practiced</span>
                     <span className="font-mono font-medium">{Math.round(accuracy * 100)}%</span>

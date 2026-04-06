@@ -5,7 +5,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Skeleton } from '@/components/ui/skeleton'
-import { Bookmark, Trash2, BookOpen } from 'lucide-react'
+import { Bookmark, Trash2, BookOpen, BookMarked } from 'lucide-react'
+import { EmptyState } from '@/components/ui/empty-state'
+import Link from 'next/link'
 import { DOMAIN_NAMES, DIFFICULTY_LABELS, DOMAIN_COLORS } from '@/lib/study/constants'
 import { cn } from '@/lib/utils'
 import type { DomainId, QuestionOption } from '@/types/study'
@@ -72,14 +74,16 @@ export default function BookmarksPage() {
       </div>
 
       {bookmarks.length === 0 && (
-        <Card>
-          <CardContent className="pt-6 text-center space-y-3">
-            <BookOpen className="h-10 w-10 mx-auto text-muted-foreground" />
-            <p className="text-sm text-muted-foreground">
-              No bookmarked questions yet. Click the bookmark icon on any question to save it for later.
-            </p>
-          </CardContent>
-        </Card>
+        <EmptyState
+          icon={BookMarked}
+          title="No bookmarks yet"
+          description="Click the bookmark icon on any question during practice to save it for later review."
+          action={
+            <Link href="/practice">
+              <Button size="sm" className="shadow-lg shadow-primary/20">Start Practicing</Button>
+            </Link>
+          }
+        />
       )}
 
       {bookmarks.map((bm) => {

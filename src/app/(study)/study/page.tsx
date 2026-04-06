@@ -180,11 +180,11 @@ export default async function StudyDashboard() {
       })()}
 
       {/* Actions */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         <Link href="/practice">
-          <Card className="hover:border-primary/50 transition-colors cursor-pointer h-full">
+          <Card className="hover:border-primary/50 transition-all duration-300 cursor-pointer h-full hover:shadow-lg hover:shadow-blue-500/5 group">
             <CardContent className="pt-5 pb-4 flex items-center gap-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-500/10">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-500/10 transition-transform duration-300 group-hover:scale-110">
                 <BookOpen className="h-5 w-5 text-blue-500" />
               </div>
               <div>
@@ -195,9 +195,9 @@ export default async function StudyDashboard() {
           </Card>
         </Link>
         <Link href="/review">
-          <Card className="hover:border-primary/50 transition-colors cursor-pointer h-full">
+          <Card className="hover:border-primary/50 transition-all duration-300 cursor-pointer h-full hover:shadow-lg hover:shadow-green-500/5 group">
             <CardContent className="pt-5 pb-4 flex items-center gap-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-green-500/10">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-green-500/10 transition-transform duration-300 group-hover:scale-110">
                 <RotateCcw className="h-5 w-5 text-green-500" />
               </div>
               <div>
@@ -210,9 +210,9 @@ export default async function StudyDashboard() {
           </Card>
         </Link>
         <Link href="/mock-exam">
-          <Card className="hover:border-primary/50 transition-colors cursor-pointer h-full">
+          <Card className="hover:border-primary/50 transition-all duration-300 cursor-pointer h-full hover:shadow-lg hover:shadow-purple-500/5 group sm:col-span-2 md:col-span-1">
             <CardContent className="pt-5 pb-4 flex items-center gap-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-purple-500/10">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-purple-500/10 transition-transform duration-300 group-hover:scale-110">
                 <ClipboardCheck className="h-5 w-5 text-purple-500" />
               </div>
               <div>

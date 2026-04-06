@@ -13,11 +13,13 @@ import {
   Bookmark,
   Settings,
   LogOut,
+  Sparkles,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import { ConfirmDialog } from '@/components/ui/confirm-dialog'
+import { ThemeSwitcher } from '@/components/ui/theme-switcher'
 import type { Profile } from '@/types/study'
 
 const navItems = [
@@ -58,8 +60,8 @@ export function StudySidebar({ user }: StudySidebarProps) {
     <aside className="flex w-60 flex-col border-r border-border bg-card">
       {/* Logo */}
       <Link href="/study" className="flex h-14 items-center gap-2 border-b border-border px-4">
-        <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary shadow-sm shadow-primary/40">
-          <span className="text-xs font-bold text-primary-foreground">CF</span>
+        <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary shadow-sm shadow-primary/30">
+          <Sparkles className="h-3.5 w-3.5 text-primary-foreground" />
         </div>
         <span className="font-semibold text-foreground">CertForge</span>
       </Link>
@@ -120,9 +122,14 @@ export function StudySidebar({ user }: StudySidebarProps) {
           onConfirm={handleSignOut}
         />
 
+        {/* Theme */}
+        <div className="px-3 py-2">
+          <ThemeSwitcher compact />
+        </div>
+
         {/* User */}
-        <div className="flex items-center gap-3 px-3 py-2 mt-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent text-xs font-medium">
+        <div className="flex items-center gap-3 px-3 py-2 mt-1">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/20 text-xs font-medium text-primary">
             {initials}
           </div>
           <div className="min-w-0 flex-1">
