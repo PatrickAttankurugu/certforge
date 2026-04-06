@@ -4,6 +4,8 @@ import { StudySidebar } from '@/components/study/study-sidebar'
 import { MobileHeader } from '@/components/study/mobile-header'
 import { QueryProvider } from '@/components/providers/query-provider'
 import { StudyTimerProvider } from '@/components/providers/study-timer-provider'
+import { OnboardingFlow } from '@/components/study/onboarding-flow'
+import { ReferralBanner } from '@/components/study/referral-banner'
 import type { Profile } from '@/types/study'
 
 export default async function StudyLayout({
@@ -29,6 +31,15 @@ export default async function StudyLayout({
     .from('user_study_profiles')
     .upsert({ user_id: user.id }, { onConflict: 'user_id' })
 
+  // Check if user is brand new (no questions answered = show onboarding)
+  const { data: studyProfile } = await supabase
+    .from('user_study_profiles')
+    .select('total_questions_answered')
+    .eq('user_id', user.id)
+    .single()
+
+  const isNewUser = (studyProfile?.total_questions_answered ?? 0) === 0
+
   const sidebarUser: Profile = {
     id: profile.id,
     email: profile.email,
@@ -47,9 +58,13 @@ export default async function StudyLayout({
           </div>
           <div className="flex flex-1 flex-col overflow-hidden">
             <MobileHeader user={sidebarUser} />
+            <ReferralBanner />
             <main className="flex-1 overflow-y-auto">{children}</main>
           </div>
         </div>
+        {isNewUser && (
+          <OnboardingFlow userId={user.id} userName={profile.full_name} />
+        )}
       </StudyTimerProvider>
     </QueryProvider>
   )

@@ -18,6 +18,8 @@ import {
   Calendar,
 } from 'lucide-react'
 import type { DomainId, DomainProgress, TopicProgress } from '@/types/study'
+import { AchievementChecker } from '@/components/study/achievement-toast'
+import { ShareScoreCard } from '@/components/study/share-score-card'
 
 export const metadata = { title: 'Dashboard | CertForge' }
 
@@ -52,14 +54,33 @@ export default async function StudyDashboard() {
   const streak = studyProfile?.study_streak ?? 0
   const totalAnswered = studyProfile?.total_questions_answered ?? 0
 
+  // Mock exam stats for achievements
+  const mockExamsCompleted = recentExams?.length ?? 0
+  const bestMockScore = recentExams?.length ? Math.max(...recentExams.map((e: { score: number | null }) => e.score ?? 0)) : undefined
+  const domainAccuracies = dp.map(d => d.accuracy)
+
   return (
     <div className="p-6 max-w-5xl mx-auto space-y-6">
-      {/* Header */}
-      <div>
-        <h1 className="text-2xl font-bold">Study Dashboard</h1>
-        <p className="text-muted-foreground text-sm mt-1">
-          AWS Solutions Architect Associate (SAA-C03)
-        </p>
+      {/* Achievement checker — Hooked: Variable Reward */}
+      <AchievementChecker
+        totalQuestions={totalAnswered}
+        streak={streak}
+        mockExamsCompleted={mockExamsCompleted}
+        bestMockScore={bestMockScore}
+        domainAccuracies={domainAccuracies}
+      />
+
+      {/* Header with streak sharing */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold">Study Dashboard</h1>
+          <p className="text-muted-foreground text-sm mt-1">
+            AWS Solutions Architect Associate (SAA-C03)
+          </p>
+        </div>
+        {streak >= 3 && (
+          <ShareScoreCard type="streak" streakDays={streak} />
+        )}
       </div>
 
       {/* Quick stats */}

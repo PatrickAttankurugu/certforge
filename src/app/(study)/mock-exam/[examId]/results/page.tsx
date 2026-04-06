@@ -9,6 +9,7 @@ import { Progress } from '@/components/ui/progress'
 import { Skeleton } from '@/components/ui/skeleton'
 import { ArrowLeft, CheckCircle, XCircle, Trophy, TrendingUp, ChevronDown, ChevronUp } from 'lucide-react'
 import { DOMAIN_NAMES, DOMAIN_COLORS, EXAM_PASS_SCORE, DIFFICULTY_LABELS } from '@/lib/study/constants'
+import { ShareScoreCard } from '@/components/study/share-score-card'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import type { DomainId, DomainBreakdown, QuestionOption } from '@/types/study'
@@ -172,13 +173,21 @@ export default function ExamResultsPage({ params }: { params: Promise<{ examId: 
         />
       )}
 
-      <div className="flex gap-3">
+      <div className="flex flex-wrap gap-3">
         <Link href="/mock-exam">
           <Button variant="outline">Back to Exams</Button>
         </Link>
         <Link href="/practice?focus=weak">
           <Button>Practice Weak Areas</Button>
         </Link>
+        <ShareScoreCard
+          type="mock-exam"
+          score={exam.score ?? 0}
+          passed={!!passed}
+          correctCount={exam.correct_count ?? 0}
+          totalQuestions={exam.total_questions}
+          domainBreakdown={exam.domain_breakdown ?? undefined}
+        />
       </div>
     </div>
   )
