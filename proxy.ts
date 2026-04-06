@@ -5,13 +5,18 @@ import type { NextRequest } from 'next/server'
 const PUBLIC_PATHS = new Set([
   '/', '/login', '/signup', '/forgot-password', '/pricing',
   '/api/auth/callback', '/api/stripe/webhook',
+  '/guarantee', '/teams', '/certifications', '/lifetime',
+  '/affiliates', '/gift',
 ])
+
+const PUBLIC_PREFIXES = ['/practice-questions']
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   // Allow public paths and static assets
-  if (PUBLIC_PATHS.has(pathname) || pathname.startsWith('/_next') || pathname.startsWith('/api/auth')) {
+  const isPublicPrefix = PUBLIC_PREFIXES.some((p) => pathname.startsWith(p))
+  if (PUBLIC_PATHS.has(pathname) || isPublicPrefix || pathname.startsWith('/_next') || pathname.startsWith('/api/auth')) {
     return NextResponse.next()
   }
 
