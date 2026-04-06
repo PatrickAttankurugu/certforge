@@ -123,7 +123,7 @@ For each day, specify the focus domain, specific topics, question target, and ac
 Use day names: Monday through Sunday.`
 
   const { output: plan } = await generateText({
-    model: gateway('openai/gpt-4o-mini'),
+    model: gateway('openai/gpt-5.4-mini'),
     prompt,
     output: Output.object({ schema: studyPlanSchema }),
   })

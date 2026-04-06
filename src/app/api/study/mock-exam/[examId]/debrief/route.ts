@@ -133,7 +133,7 @@ export async function POST(
   )
 
   const result = streamText({
-    model: gateway('openai/gpt-4o-mini'),
+    model: gateway('openai/gpt-5.4-mini'),
     prompt,
     maxOutputTokens: 1500,
   })
