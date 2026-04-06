@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server'
 import { StudySidebar } from '@/components/study/study-sidebar'
 import { MobileHeader } from '@/components/study/mobile-header'
 import { QueryProvider } from '@/components/providers/query-provider'
+import { StudyTimerProvider } from '@/components/providers/study-timer-provider'
 import type { Profile } from '@/types/study'
 
 export default async function StudyLayout({
@@ -39,15 +40,17 @@ export default async function StudyLayout({
 
   return (
     <QueryProvider>
-      <div className="flex h-screen overflow-hidden">
-        <div className="hidden md:flex">
-          <StudySidebar user={sidebarUser} />
+      <StudyTimerProvider>
+        <div className="flex h-screen overflow-hidden">
+          <div className="hidden md:flex">
+            <StudySidebar user={sidebarUser} />
+          </div>
+          <div className="flex flex-1 flex-col overflow-hidden">
+            <MobileHeader user={sidebarUser} />
+            <main className="flex-1 overflow-y-auto">{children}</main>
+          </div>
         </div>
-        <div className="flex flex-1 flex-col overflow-hidden">
-          <MobileHeader user={sidebarUser} />
-          <main className="flex-1 overflow-y-auto">{children}</main>
-        </div>
-      </div>
+      </StudyTimerProvider>
     </QueryProvider>
   )
 }

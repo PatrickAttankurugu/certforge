@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server'
 import { buildMockExam } from '@/lib/study/exam-builder'
 import { EXAM_TIME_LIMIT_MS, EXAM_TOTAL_QUESTIONS } from '@/lib/study/constants'
 import { checkMockExamLimit } from '@/lib/study/plan-limits'
+import { checkRateLimit } from '@/lib/api/rate-limit'
 import type { Question } from '@/types/study'
 
 // GET: list user's mock exams
@@ -22,10 +23,13 @@ export async function GET() {
 }
 
 // POST: create a new mock exam
-export async function POST() {
+export async function POST(request: Request) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
+  const rl = checkRateLimit(request, user.id, 'exam')
+  if (!rl.allowed) return rl.response
 
   // Check plan limits
   const usage = await checkMockExamLimit(supabase, user.id)

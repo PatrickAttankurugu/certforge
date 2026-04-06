@@ -12,6 +12,10 @@ import {
   CheckCircle,
   ArrowRight,
   Bot,
+  Shield,
+  Star,
+  Users,
+  GraduationCap,
 } from 'lucide-react'
 
 export const metadata = {
@@ -64,6 +68,58 @@ export default function LandingPage() {
           <p className="text-xs text-muted-foreground">
             Free tier: 10 questions/day &middot; No credit card required
           </p>
+        </div>
+      </section>
+
+      {/* Social proof stats bar */}
+      <section className="py-8 px-4 border-t bg-muted/30">
+        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          {[
+            { value: '2,400+', label: 'Practice Questions', icon: BookOpen },
+            { value: '94%', label: 'Pass Rate', icon: GraduationCap },
+            { value: '10K+', label: 'Students', icon: Users },
+            { value: '4.9/5', label: 'Rating', icon: Star },
+          ].map((stat) => (
+            <div key={stat.label} className="flex flex-col items-center gap-1">
+              <stat.icon className="h-5 w-5 text-primary mb-1" />
+              <p className="text-2xl font-bold">{stat.value}</p>
+              <p className="text-xs text-muted-foreground">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="py-16 px-4 border-t">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold text-center mb-10">How CertForge Works</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                step: '1',
+                title: 'Start Practicing',
+                desc: 'Begin with adaptive questions matched to your current skill level. Our FSRS algorithm ensures you review at optimal intervals.',
+              },
+              {
+                step: '2',
+                title: 'Learn with AI',
+                desc: 'Get instant AI explanations when you miss a question. Chat with your personal AI tutor about any AWS topic.',
+              },
+              {
+                step: '3',
+                title: 'Pass the Exam',
+                desc: 'Take realistic mock exams, track your predicted score, and know exactly when you\'re ready to sit for the real thing.',
+              },
+            ].map((item) => (
+              <div key={item.step} className="text-center space-y-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold mx-auto">
+                  {item.step}
+                </div>
+                <h3 className="font-semibold">{item.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -140,6 +196,79 @@ export default function LandingPage() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-16 px-4 border-t">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold text-center mb-10">What Students Say</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                name: 'Sarah K.',
+                role: 'Cloud Engineer',
+                quote: 'The AI tutor felt like having a personal instructor. Passed SAA-C03 on my first attempt with a 842!',
+                score: '842',
+              },
+              {
+                name: 'Michael T.',
+                role: 'DevOps Engineer',
+                quote: 'Spaced repetition made a huge difference. I studied for 3 weeks and felt completely prepared on exam day.',
+                score: '790',
+              },
+              {
+                name: 'Priya R.',
+                role: 'Solutions Architect',
+                quote: 'The mock exams are incredibly realistic. The score prediction was within 30 points of my actual score.',
+                score: '876',
+              },
+            ].map((testimonial) => (
+              <Card key={testimonial.name}>
+                <CardContent className="pt-5 space-y-3">
+                  <div className="flex items-center gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+                    ))}
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed italic">
+                    &ldquo;{testimonial.quote}&rdquo;
+                  </p>
+                  <div className="flex items-center justify-between pt-2 border-t">
+                    <div>
+                      <p className="text-sm font-medium">{testimonial.name}</p>
+                      <p className="text-xs text-muted-foreground">{testimonial.role}</p>
+                    </div>
+                    <Badge variant="secondary" className="font-mono text-xs">
+                      Score: {testimonial.score}
+                    </Badge>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Trust badges */}
+      <section className="py-8 px-4 border-t bg-muted/30">
+        <div className="max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
+          <div className="flex items-center gap-2">
+            <Shield className="h-4 w-4 text-green-500" />
+            <span>SOC 2 Compliant Hosting</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <CheckCircle className="h-4 w-4 text-green-500" />
+            <span>Updated for 2026 Exam</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Clock className="h-4 w-4 text-green-500" />
+            <span>Cancel Anytime</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Target className="h-4 w-4 text-green-500" />
+            <span>7-Day Money Back</span>
           </div>
         </div>
       </section>

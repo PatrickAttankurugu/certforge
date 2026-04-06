@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { Skeleton } from '@/components/ui/skeleton'
-import { TrendingUp, Target, Flame, BookOpen, Award, AlertTriangle } from 'lucide-react'
+import { TrendingUp, Target, Flame, BookOpen, Award, AlertTriangle, FileDown } from 'lucide-react'
 import { DOMAIN_NAMES, DOMAIN_COLORS, EXAM_PASS_SCORE } from '@/lib/study/constants'
 import { cn } from '@/lib/utils'
 import {
@@ -58,7 +58,18 @@ export default function ProgressPage() {
 
   return (
     <div className="p-6 max-w-5xl mx-auto space-y-6">
-      <h1 className="text-2xl font-bold">Progress & Analytics</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl font-bold">Progress & Analytics</h1>
+        <a
+          href="/api/study/report"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-medium hover:bg-accent transition-colors"
+        >
+          <FileDown className="h-4 w-4" />
+          Export Report
+        </a>
+      </div>
 
       {/* Overview stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

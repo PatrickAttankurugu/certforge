@@ -10,6 +10,7 @@ import {
   ClipboardCheck,
   MessageSquare,
   BarChart3,
+  Bookmark,
   Settings,
   LogOut,
 } from 'lucide-react'
@@ -27,6 +28,7 @@ const navItems = [
   { href: '/mock-exam', label: 'Mock Exam', icon: ClipboardCheck },
   { href: '/tutor', label: 'AI Tutor', icon: MessageSquare },
   { href: '/progress', label: 'Progress', icon: BarChart3 },
+  { href: '/bookmarks', label: 'Bookmarks', icon: Bookmark },
 ]
 
 const bottomItems = [

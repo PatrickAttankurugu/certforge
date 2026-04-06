@@ -5,12 +5,16 @@ import { createAdminClient } from '@/lib/supabase/admin'
 import { buildTutorSystemPrompt } from '@/lib/study/tutor-prompt'
 import { checkTutorLimit } from '@/lib/study/plan-limits'
 import { tutorSchema, parseBody } from '@/lib/api/validation'
+import { checkRateLimit } from '@/lib/api/rate-limit'
 import type { DomainId, WeakArea } from '@/types/study'
 
 export async function POST(request: Request) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
+  const rl = checkRateLimit(request, user.id, 'ai')
+  if (!rl.allowed) return rl.response
 
   const usage = await checkTutorLimit(supabase, user.id)
   if (!usage.allowed) return NextResponse.json({ error: usage.message }, { status: 429 })

@@ -4,6 +4,7 @@ import { createClient } from '@/lib/supabase/server'
 import { buildQuestionGenerationPrompt } from '@/lib/study/question-generator'
 import { checkQuestionGenerationLimit } from '@/lib/study/plan-limits'
 import { generateQuestionSchema, parseBody } from '@/lib/api/validation'
+import { checkRateLimit } from '@/lib/api/rate-limit'
 import type { DomainId } from '@/types/study'
 import { NextResponse } from 'next/server'
 
@@ -25,6 +26,9 @@ export async function POST(request: Request) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
+  const rl = checkRateLimit(request, user.id, 'ai')
+  if (!rl.allowed) return rl.response
 
   const usage = await checkQuestionGenerationLimit(supabase, user.id)
   if (!usage.allowed) return NextResponse.json({ error: usage.message }, { status: 429 })

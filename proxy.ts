@@ -41,7 +41,7 @@ export function proxy(request: NextRequest) {
   return (async () => {
     const { data: { user } } = await supabase.auth.getUser()
 
-    const protectedPrefixes = ['/study', '/practice', '/review', '/mock-exam', '/tutor', '/progress', '/domains', '/settings']
+    const protectedPrefixes = ['/study', '/practice', '/review', '/mock-exam', '/tutor', '/progress', '/domains', '/bookmarks', '/settings']
     const isProtected = protectedPrefixes.some((p) => pathname.startsWith(p))
 
     if (!user && isProtected) {

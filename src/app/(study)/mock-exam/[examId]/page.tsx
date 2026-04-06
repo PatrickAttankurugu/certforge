@@ -8,9 +8,10 @@ import { Badge } from '@/components/ui/badge'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Progress } from '@/components/ui/progress'
 import { cn } from '@/lib/utils'
-import { Clock, ChevronLeft, ChevronRight, Flag, AlertTriangle } from 'lucide-react'
+import { Clock, ChevronLeft, ChevronRight, Flag, AlertTriangle, Keyboard } from 'lucide-react'
 import { ConfirmDialog } from '@/components/ui/confirm-dialog'
 import { EXAM_TIME_LIMIT_MS, DIFFICULTY_LABELS, DOMAIN_NAMES } from '@/lib/study/constants'
+import { useKeyboardShortcuts } from '@/lib/hooks/use-keyboard-shortcuts'
 import type { DomainId, QuestionOption } from '@/types/study'
 
 interface ExamQuestion {
@@ -103,8 +104,34 @@ export default function TakeExamPage({ params }: { params: Promise<{ examId: str
   }, [currentIndex, exam])
 
   const currentQuestion = exam?.questions[currentIndex]
+  const optionIds = currentQuestion?.options.map((o) => o.id) ?? []
 
-  const toggleOption = (id: string) => {
+  // Keyboard shortcuts: A/B/C/D to select, arrows to navigate
+  useKeyboardShortcuts({
+    optionIds,
+    onSelectOption: useCallback((id: string) => {
+      setSelected((prev) => {
+        const next = new Set(prev)
+        if (currentQuestion?.question_type === 'multi') {
+          if (next.has(id)) next.delete(id)
+          else next.add(id)
+        } else {
+          next.clear()
+          next.add(id)
+        }
+        return next
+      })
+    }, [currentQuestion?.question_type]),
+    onNext: useCallback(() => {
+      setCurrentIndex((i) => i + 1 < (exam?.questions.length ?? 0) ? i + 1 : i)
+    }, [exam?.questions.length]),
+    onPrevious: useCallback(() => {
+      setCurrentIndex((i) => i > 0 ? i - 1 : i)
+    }, []),
+    enabled: !!exam && !loading && !submitting,
+  })
+
+  const toggleOption = useCallback((id: string) => {
     setSelected((prev) => {
       const next = new Set(prev)
       if (currentQuestion?.question_type === 'multi') {
@@ -116,7 +143,7 @@ export default function TakeExamPage({ params }: { params: Promise<{ examId: str
       }
       return next
     })
-  }
+  }, [currentQuestion?.question_type])
 
   const saveAnswer = async () => {
     if (!currentQuestion || selected.size === 0) return
@@ -296,6 +323,12 @@ export default function TakeExamPage({ params }: { params: Promise<{ examId: str
           </div>
         </CardContent>
       </Card>
+
+      {/* Keyboard shortcut hint */}
+      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+        <Keyboard className="h-3.5 w-3.5" />
+        <span>Press <kbd className="px-1 py-0.5 rounded bg-muted font-mono text-[10px]">A</kbd>-<kbd className="px-1 py-0.5 rounded bg-muted font-mono text-[10px]">D</kbd> to select, <kbd className="px-1 py-0.5 rounded bg-muted font-mono text-[10px]">&larr;</kbd><kbd className="px-1 py-0.5 rounded bg-muted font-mono text-[10px]">&rarr;</kbd> to navigate</span>
+      </div>
 
       {/* Warning for unanswered */}
       {answeredCount < totalQuestions && timeLeft < 5 * 60 * 1000 && (

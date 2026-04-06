@@ -11,6 +11,7 @@ import {
   ClipboardCheck,
   MessageSquare,
   BarChart3,
+  Bookmark,
   Settings,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -33,6 +34,7 @@ const navItems = [
   { href: '/mock-exam', label: 'Mock Exam', icon: ClipboardCheck },
   { href: '/tutor', label: 'AI Tutor', icon: MessageSquare },
   { href: '/progress', label: 'Progress', icon: BarChart3 },
+  { href: '/bookmarks', label: 'Bookmarks', icon: Bookmark },
   { href: '/settings', label: 'Settings', icon: Settings },
 ]
 

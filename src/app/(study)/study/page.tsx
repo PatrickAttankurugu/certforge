@@ -15,6 +15,7 @@ import {
   Flame,
   ClipboardCheck,
   AlertTriangle,
+  Calendar,
 } from 'lucide-react'
 import type { DomainId, DomainProgress, TopicProgress } from '@/types/study'
 
@@ -104,6 +105,58 @@ export default async function StudyDashboard() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Exam countdown & pace */}
+      {studyProfile?.target_exam_date && (() => {
+        const examDate = new Date(studyProfile.target_exam_date)
+        const today = new Date()
+        today.setHours(0, 0, 0, 0)
+        examDate.setHours(0, 0, 0, 0)
+        const daysLeft = Math.ceil((examDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24))
+        const totalQuestionsSeen = dp.reduce((sum, d) => sum + d.questions_seen, 0)
+        // Estimate ~500 total questions needed for readiness
+        const targetTotal = 500
+        const remaining = Math.max(0, targetTotal - totalQuestionsSeen)
+        const dailyPace = daysLeft > 0 ? Math.ceil(remaining / daysLeft) : remaining
+
+        return (
+          <Card className={daysLeft <= 7 ? 'border-red-500/30' : daysLeft <= 30 ? 'border-amber-500/30' : 'border-primary/30'}>
+            <CardContent className="pt-4 pb-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                    <Calendar className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold">
+                      {daysLeft > 0
+                        ? `${daysLeft} day${daysLeft === 1 ? '' : 's'} until exam`
+                        : daysLeft === 0
+                        ? 'Exam day is today!'
+                        : 'Exam date has passed'}
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      {examDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                    </p>
+                  </div>
+                </div>
+                {daysLeft > 0 && remaining > 0 && (
+                  <div className="text-right">
+                    <p className="text-lg font-bold font-mono">{dailyPace}</p>
+                    <p className="text-xs text-muted-foreground">questions/day to stay on pace</p>
+                  </div>
+                )}
+                {daysLeft > 0 && remaining === 0 && (
+                  <Badge className="bg-green-500/20 text-green-400">On track</Badge>
+                )}
+              </div>
+              {daysLeft > 0 && (
+                <Progress value={Math.min(100, (totalQuestionsSeen / targetTotal) * 100)} className="h-1.5 mt-3" />
+              )}
+            </CardContent>
+          </Card>
+        )
+      })()}
 
       {/* Actions */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
