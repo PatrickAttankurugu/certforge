@@ -79,7 +79,7 @@ A one-liner to remember the key difference.
 Be concise, exam-focused, and accurate. Reference actual AWS limits and defaults where relevant.`
 
   const result = streamText({
-    model: gateway('anthropic/claude-haiku-4.5'),
+    model: gateway('openai/gpt-4o-mini'),
     prompt,
     maxOutputTokens: 1200,
     async onFinish({ text }) {

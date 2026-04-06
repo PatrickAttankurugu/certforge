@@ -46,7 +46,7 @@ export async function POST(request: Request) {
   )
 
   const result = streamText({
-    model: gateway('anthropic/claude-haiku-4.5'),
+    model: gateway('openai/gpt-4o-mini'),
     prompt,
     maxOutputTokens: 500,
   })

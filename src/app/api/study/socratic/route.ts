@@ -75,7 +75,7 @@ export async function POST(request: Request) {
   )
 
   const result = streamText({
-    model: gateway('anthropic/claude-sonnet-4.6'),
+    model: gateway('openai/gpt-4o'),
     system: systemPrompt,
     messages,
     maxOutputTokens: 500,

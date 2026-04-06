@@ -70,7 +70,7 @@ export async function POST(request: Request) {
   )
 
   const { output: question } = await generateText({
-    model: gateway('anthropic/claude-haiku-4.5'),
+    model: gateway('openai/gpt-4o-mini'),
     prompt,
     output: Output.object({ schema: questionSchema }),
   })
@@ -91,7 +91,7 @@ export async function POST(request: Request) {
       wrong_explanations: question.wrong_explanations,
       aws_services: question.aws_services,
       source: 'ai_generated',
-      ai_model: 'claude-haiku-4.5',
+      ai_model: 'gpt-4o-mini',
       is_active: true,
     })
     .select('id')

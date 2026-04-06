@@ -90,7 +90,7 @@ RULES:
 - Make the explanation reference the core concept and why the correct answer applies in this new scenario`
 
   const { output: variant } = await generateText({
-    model: gateway('anthropic/claude-haiku-4.5'),
+    model: gateway('openai/gpt-4o-mini'),
     prompt,
     output: Output.object({ schema: variantOutputSchema }),
   })
