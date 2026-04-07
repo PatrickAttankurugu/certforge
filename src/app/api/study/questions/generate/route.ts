@@ -27,7 +27,6 @@ const questionSchema = z.object({
 })
 
 export async function POST(request: Request) {
-  try {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -106,9 +105,4 @@ export async function POST(request: Request) {
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
 
   return NextResponse.json({ question_id: saved.id, ...question })
-  } catch (e) {
-    console.error('[questions/generate] error', e)
-    const msg = e instanceof Error ? `${e.name}: ${e.message}` : String(e)
-    return NextResponse.json({ error: msg, stack: e instanceof Error ? e.stack?.split('\n').slice(0,5) : undefined }, { status: 500 })
-  }
 }
