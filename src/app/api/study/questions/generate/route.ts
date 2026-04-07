@@ -1,6 +1,7 @@
 import { generateText, Output, gateway } from 'ai'
 import { z } from 'zod'
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import { buildQuestionGenerationPrompt } from '@/lib/study/question-generator'
 import { checkQuestionGenerationLimit } from '@/lib/study/plan-limits'
 import { generateQuestionSchema, parseBody } from '@/lib/api/validation'
@@ -81,8 +82,9 @@ export async function POST(request: Request) {
 
   if (!question) return NextResponse.json({ error: 'Failed to generate question' }, { status: 500 })
 
-  // Save to database
-  const { data: saved, error } = await supabase
+  // Save to database (admin client: AI-generated questions are server-controlled, bypass RLS)
+  const admin = createAdminClient()
+  const { data: saved, error } = await admin
     .from('questions')
     .insert({
       domain_id: domain_id ?? 'secure',
