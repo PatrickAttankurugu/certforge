@@ -17,7 +17,10 @@ const questionSchema = z.object({
     is_correct: z.boolean(),
   })),
   explanation: z.string(),
-  wrong_explanations: z.record(z.string(), z.string()),
+  wrong_explanations: z.array(z.object({
+    option_id: z.string(),
+    explanation: z.string(),
+  })),
   aws_services: z.array(z.string()),
   difficulty: z.number().min(1).max(5),
 })
@@ -89,7 +92,7 @@ export async function POST(request: Request) {
       question_type: question.question_type,
       options: question.options,
       explanation: question.explanation,
-      wrong_explanations: question.wrong_explanations,
+      wrong_explanations: Object.fromEntries(question.wrong_explanations.map((w) => [w.option_id, w.explanation])),
       aws_services: question.aws_services,
       source: 'ai_generated',
       ai_model: 'gpt-5.4-mini',
