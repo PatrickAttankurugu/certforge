@@ -1,0 +1,36 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - img [ref=e9]
+        - generic [ref=e12]: CertForge
+      - heading "Welcome back, future AWS Architect" [level=2] [ref=e13]
+      - paragraph [ref=e14]: Continue your journey to AWS certification. Your personalized study plan is waiting.
+      - paragraph [ref=e20]:
+        - strong [ref=e21]: 10,247
+        - text: engineers passed
+    - generic [ref=e23]:
+      - generic [ref=e24]:
+        - generic [ref=e25]: Sign in to CertForge
+        - paragraph [ref=e26]: AWS SAA-C03 Study Assistant
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - generic [ref=e29]:
+            - generic [ref=e30]: Email
+            - textbox "you@example.com" [ref=e31]
+          - generic [ref=e32]:
+            - generic [ref=e33]: Password
+            - generic [ref=e34]:
+              - textbox "••••••••" [ref=e35]
+              - button [ref=e36]:
+                - img [ref=e37]
+          - button "Sign In" [ref=e40]
+        - generic [ref=e41]:
+          - link "Forgot password?" [ref=e42] [cursor=pointer]:
+            - /url: /forgot-password
+          - paragraph [ref=e43]:
+            - text: Don't have an account?
+            - link "Sign up" [ref=e44] [cursor=pointer]:
+              - /url: /signup
+  - region "Notifications alt+T"
+  - alert [ref=e45]

@@ -1,0 +1,3 @@
+[    1476ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://certforge-two.vercel.app/practice-questions/secure:0
+[    2228ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://certforge-two.vercel.app/icon-192.png:0
+[    2229ms] [WARNING] Error while trying to use the following icon from the Manifest: https://certforge-two.vercel.app/icon-192.png (Download error or resource isn't a valid image) @ https://certforge-two.vercel.app/practice-questions/secure:0

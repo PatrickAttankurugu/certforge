@@ -1,0 +1,187 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "CertForge" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img [ref=e7]
+          - generic [ref=e10]: CertForge
+        - generic [ref=e11]:
+          - link "Pass Guarantee" [ref=e12] [cursor=pointer]:
+            - /url: /guarantee
+          - link "Teams" [ref=e13] [cursor=pointer]:
+            - /url: /teams
+          - link "Certifications" [ref=e14] [cursor=pointer]:
+            - /url: /certifications
+          - link "Lifetime Access" [ref=e15] [cursor=pointer]:
+            - /url: /lifetime
+        - generic [ref=e16]:
+          - link "Sign in" [ref=e17] [cursor=pointer]:
+            - /url: /login
+            - button "Sign in" [ref=e18]
+          - link "Start Free" [ref=e19] [cursor=pointer]:
+            - /url: /signup
+            - button "Start Free" [ref=e20]:
+              - text: Start Free
+              - img
+    - main [ref=e21]:
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - generic [ref=e24]:
+            - img
+            - text: Multi-Cloud Certification Prep
+          - heading "One platform for every cloud certification" [level=1] [ref=e25]
+          - paragraph [ref=e26]: CertForge is expanding beyond AWS. Get AI-powered study tools for AWS, Azure, and GCP certifications - all with the same proven spaced repetition system.
+        - generic [ref=e27]:
+          - heading "Available Now" [level=2] [ref=e28]:
+            - img [ref=e29]
+            - text: Available Now
+          - generic [ref=e34]:
+            - img [ref=e36]
+            - generic [ref=e38]:
+              - generic [ref=e39]:
+                - heading "AWS Solutions Architect Associate" [level=3] [ref=e40]
+                - generic [ref=e41]: SAA-C03
+                - generic [ref=e42]: Available
+              - paragraph [ref=e43]: Design and deploy scalable, highly available, and fault-tolerant systems on AWS. The most popular cloud certification worldwide.
+              - generic [ref=e44]:
+                - generic [ref=e45]:
+                  - img [ref=e46]
+                  - text: Associate
+                - generic [ref=e49]: 2,400+ questions
+                - generic [ref=e50]: 94% pass rate
+            - link "Start Studying" [ref=e51] [cursor=pointer]:
+              - /url: /signup
+              - button "Start Studying" [ref=e52]:
+                - text: Start Studying
+                - img
+        - generic [ref=e53]:
+          - heading "Coming Soon" [level=2] [ref=e54]:
+            - img [ref=e55]
+            - text: Coming Soon
+          - generic [ref=e58]:
+            - generic [ref=e60]:
+              - generic [ref=e61]:
+                - img [ref=e63]
+                - generic [ref=e65]:
+                  - generic [ref=e66]:
+                    - heading "AWS Solutions Architect Professional" [level=3] [ref=e67]
+                    - generic [ref=e68]: SAP-C02
+                  - paragraph [ref=e69]: Professional
+              - paragraph [ref=e70]: Advanced design of distributed applications and systems on AWS. For experienced cloud architects seeking the highest AWS credential.
+              - button "Notify Me When Available" [ref=e71]:
+                - img
+                - text: Notify Me When Available
+            - generic [ref=e73]:
+              - generic [ref=e74]:
+                - img [ref=e76]
+                - generic [ref=e78]:
+                  - generic [ref=e79]:
+                    - heading "AWS Developer Associate" [level=3] [ref=e80]
+                    - generic [ref=e81]: DVA-C02
+                  - paragraph [ref=e82]: Associate
+              - paragraph [ref=e83]: Develop, deploy, and debug cloud-based applications using AWS. Covers Lambda, DynamoDB, API Gateway, and more.
+              - button "Notify Me When Available" [ref=e84]:
+                - img
+                - text: Notify Me When Available
+            - generic [ref=e86]:
+              - generic [ref=e87]:
+                - img [ref=e89]
+                - generic [ref=e92]:
+                  - generic [ref=e93]:
+                    - heading "AWS SysOps Administrator" [level=3] [ref=e94]
+                    - generic [ref=e95]: SOA-C02
+                  - paragraph [ref=e96]: Associate
+              - paragraph [ref=e97]: Deploy, manage, and operate scalable, highly available systems on AWS. Focus on monitoring, security, and automation.
+              - button "Notify Me When Available" [ref=e98]:
+                - img
+                - text: Notify Me When Available
+            - generic [ref=e100]:
+              - generic [ref=e101]:
+                - img [ref=e103]
+                - generic [ref=e105]:
+                  - generic [ref=e106]:
+                    - heading "Microsoft Azure Fundamentals" [level=3] [ref=e107]
+                    - generic [ref=e108]: AZ-900
+                  - paragraph [ref=e109]: Foundational
+              - paragraph [ref=e110]: Entry-level Azure certification covering cloud concepts, core services, security, privacy, compliance, and pricing.
+              - button "Notify Me When Available" [ref=e111]:
+                - img
+                - text: Notify Me When Available
+            - generic [ref=e113]:
+              - generic [ref=e114]:
+                - img [ref=e116]
+                - generic [ref=e118]:
+                  - generic [ref=e119]:
+                    - heading "Microsoft Azure Administrator" [level=3] [ref=e120]
+                    - generic [ref=e121]: AZ-104
+                  - paragraph [ref=e122]: Associate
+              - paragraph [ref=e123]: Manage Azure subscriptions, implement storage solutions, configure virtual networks, and manage identities.
+              - button "Notify Me When Available" [ref=e124]:
+                - img
+                - text: Notify Me When Available
+            - generic [ref=e126]:
+              - generic [ref=e127]:
+                - img [ref=e129]
+                - generic [ref=e131]:
+                  - generic [ref=e132]:
+                    - heading "Google Cloud Associate Cloud Engineer" [level=3] [ref=e133]
+                    - generic [ref=e134]: ACE
+                  - paragraph [ref=e135]: Associate
+              - paragraph [ref=e136]: Deploy applications, monitor operations, and manage enterprise solutions on Google Cloud Platform.
+              - button "Notify Me When Available" [ref=e137]:
+                - img
+                - text: Notify Me When Available
+        - generic [ref=e138]:
+          - heading "Start with AWS SAA-C03 today" [level=2] [ref=e139]
+          - paragraph [ref=e140]: Begin your cloud certification journey with our most popular exam prep.
+          - link "Start Studying Free" [ref=e141] [cursor=pointer]:
+            - /url: /signup
+            - button "Start Studying Free" [ref=e142]:
+              - text: Start Studying Free
+              - img
+    - contentinfo [ref=e143]:
+      - generic [ref=e144]:
+        - generic [ref=e145]:
+          - paragraph [ref=e146]: Product
+          - list [ref=e147]:
+            - listitem [ref=e148]:
+              - link "Features" [ref=e149] [cursor=pointer]:
+                - /url: /#features
+            - listitem [ref=e150]:
+              - link "Pricing" [ref=e151] [cursor=pointer]:
+                - /url: /#pricing
+            - listitem [ref=e152]:
+              - link "Lifetime Access" [ref=e153] [cursor=pointer]:
+                - /url: /lifetime
+            - listitem [ref=e154]:
+              - link "Teams" [ref=e155] [cursor=pointer]:
+                - /url: /teams
+        - generic [ref=e156]:
+          - paragraph [ref=e157]: Resources
+          - list [ref=e158]:
+            - listitem [ref=e159]:
+              - link "Free Practice Questions" [ref=e160] [cursor=pointer]:
+                - /url: /practice-questions
+            - listitem [ref=e161]:
+              - link "Certifications" [ref=e162] [cursor=pointer]:
+                - /url: /certifications
+            - listitem [ref=e163]:
+              - link "Pass Guarantee" [ref=e164] [cursor=pointer]:
+                - /url: /guarantee
+        - generic [ref=e165]:
+          - paragraph [ref=e166]: Company
+          - list [ref=e167]:
+            - listitem [ref=e168]:
+              - link "Affiliates" [ref=e169] [cursor=pointer]:
+                - /url: /affiliates
+            - listitem [ref=e170]:
+              - link "Gift Cards" [ref=e171] [cursor=pointer]:
+                - /url: /gift
+        - generic [ref=e172]:
+          - generic [ref=e173]:
+            - img [ref=e175]
+            - generic [ref=e178]: CertForge
+          - paragraph [ref=e179]: © 2026 CertForge. Not affiliated with Amazon Web Services.
+  - region "Notifications alt+T"
+  - alert [ref=e180]

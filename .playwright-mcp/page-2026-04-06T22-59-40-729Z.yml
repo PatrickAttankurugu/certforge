@@ -1,0 +1,201 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "CertForge" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img [ref=e7]
+          - generic [ref=e10]: CertForge
+        - generic [ref=e11]:
+          - link "Pass Guarantee" [ref=e12] [cursor=pointer]:
+            - /url: /guarantee
+          - link "Teams" [ref=e13] [cursor=pointer]:
+            - /url: /teams
+          - link "Certifications" [ref=e14] [cursor=pointer]:
+            - /url: /certifications
+          - link "Lifetime Access" [ref=e15] [cursor=pointer]:
+            - /url: /lifetime
+        - generic [ref=e16]:
+          - link "Sign in" [ref=e17] [cursor=pointer]:
+            - /url: /login
+            - button "Sign in" [ref=e18]
+          - link "Start Free" [ref=e19] [cursor=pointer]:
+            - /url: /signup
+            - button "Start Free" [ref=e20]:
+              - text: Start Free
+              - img
+    - main [ref=e21]:
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - generic [ref=e24]:
+            - img
+            - text: Gift Subscriptions
+          - heading "Give the gift of AWS certification" [level=1] [ref=e25]
+          - paragraph [ref=e26]: Know someone preparing for the AWS Solutions Architect exam? Gift them premium access to CertForge with AI-powered study tools, unlimited practice, and mock exams.
+        - generic [ref=e28]:
+          - generic [ref=e30]:
+            - generic [ref=e31]:
+              - paragraph [ref=e32]: 3 Months
+              - paragraph [ref=e33]: Premium access
+            - generic [ref=e34]:
+              - paragraph [ref=e35]: $87
+              - paragraph [ref=e36]: $29/mo value
+            - list [ref=e37]:
+              - listitem [ref=e38]:
+                - img [ref=e39]
+                - text: Unlimited questions
+              - listitem [ref=e42]:
+                - img [ref=e43]
+                - text: Unlimited mock exams
+              - listitem [ref=e46]:
+                - img [ref=e47]
+                - text: AI Tutor access
+              - listitem [ref=e50]:
+                - img [ref=e51]
+                - text: Custom gift message
+            - button "Gift 3 Months" [ref=e54]
+          - generic [ref=e55]:
+            - generic [ref=e57]:
+              - img
+              - text: Most Gifted
+            - generic [ref=e58]:
+              - generic [ref=e59]:
+                - paragraph [ref=e60]: 6 Months
+                - paragraph [ref=e61]: Premium access
+              - generic [ref=e62]:
+                - paragraph [ref=e63]: $149
+                - paragraph [ref=e64]: $24.83/mo value
+                - paragraph [ref=e65]: Save $25
+              - list [ref=e66]:
+                - listitem [ref=e67]:
+                  - img [ref=e68]
+                  - text: Unlimited questions
+                - listitem [ref=e71]:
+                  - img [ref=e72]
+                  - text: Unlimited mock exams
+                - listitem [ref=e75]:
+                  - img [ref=e76]
+                  - text: AI Tutor access
+                - listitem [ref=e79]:
+                  - img [ref=e80]
+                  - text: Custom gift message
+              - button "Gift 6 Months" [ref=e83]
+          - generic [ref=e85]:
+            - generic [ref=e86]:
+              - paragraph [ref=e87]: 12 Months
+              - paragraph [ref=e88]: Premium access
+            - generic [ref=e89]:
+              - paragraph [ref=e90]: $249
+              - paragraph [ref=e91]: $20.75/mo value
+              - paragraph [ref=e92]: Save $99
+            - list [ref=e93]:
+              - listitem [ref=e94]:
+                - img [ref=e95]
+                - text: Unlimited questions
+              - listitem [ref=e98]:
+                - img [ref=e99]
+                - text: Unlimited mock exams
+              - listitem [ref=e102]:
+                - img [ref=e103]
+                - text: AI Tutor access
+              - listitem [ref=e106]:
+                - img [ref=e107]
+                - text: Custom gift message
+            - button "Gift 12 Months" [ref=e110]
+        - generic [ref=e111]:
+          - heading "Preview Your Gift" [level=2] [ref=e112]
+          - generic [ref=e114]:
+            - generic [ref=e115]:
+              - img [ref=e116]
+              - generic [ref=e119]: CertForge
+            - generic [ref=e120]:
+              - paragraph [ref=e121]: A gift for you
+              - paragraph [ref=e122]: 6 Months Premium Access
+            - generic [ref=e123]: “You are going to crush the AWS exam! This is your secret weapon. Good luck!”
+            - paragraph [ref=e124]: "From: Sarah K."
+        - generic [ref=e127]:
+          - heading "Send a Gift" [level=2] [ref=e128]:
+            - img [ref=e129]
+            - text: Send a Gift
+          - generic [ref=e133]:
+            - generic [ref=e134]:
+              - generic [ref=e135]: Recipient's email
+              - textbox "friend@example.com" [ref=e136]
+            - generic [ref=e137]:
+              - generic [ref=e138]: Your name
+              - textbox "Your name" [ref=e139]
+            - generic [ref=e140]:
+              - generic [ref=e141]: Gift message (optional)
+              - textbox "Add a personal message..." [ref=e142]
+            - generic [ref=e143]:
+              - generic [ref=e144]: Plan duration
+              - combobox [ref=e145]:
+                - option "3 Months - $87" [selected]
+                - option "6 Months - $149"
+                - option "12 Months - $249"
+            - button "Purchase Gift" [ref=e146]:
+              - img
+              - text: Purchase Gift
+        - generic [ref=e148]:
+          - generic [ref=e149]:
+            - img [ref=e150]
+            - text: 4.9/5 rating
+          - generic [ref=e152]:
+            - img [ref=e153]
+            - text: Instant delivery
+          - generic [ref=e156]:
+            - img [ref=e157]
+            - text: Custom messages
+        - generic [ref=e161]:
+          - heading "Give the gift that advances careers" [level=2] [ref=e162]
+          - paragraph [ref=e163]: Help someone you care about earn their AWS certification.
+          - link "Browse Gift Options" [ref=e164] [cursor=pointer]:
+            - /url: /signup
+            - button "Browse Gift Options" [ref=e165]:
+              - text: Browse Gift Options
+              - img
+    - contentinfo [ref=e166]:
+      - generic [ref=e167]:
+        - generic [ref=e168]:
+          - paragraph [ref=e169]: Product
+          - list [ref=e170]:
+            - listitem [ref=e171]:
+              - link "Features" [ref=e172] [cursor=pointer]:
+                - /url: /#features
+            - listitem [ref=e173]:
+              - link "Pricing" [ref=e174] [cursor=pointer]:
+                - /url: /#pricing
+            - listitem [ref=e175]:
+              - link "Lifetime Access" [ref=e176] [cursor=pointer]:
+                - /url: /lifetime
+            - listitem [ref=e177]:
+              - link "Teams" [ref=e178] [cursor=pointer]:
+                - /url: /teams
+        - generic [ref=e179]:
+          - paragraph [ref=e180]: Resources
+          - list [ref=e181]:
+            - listitem [ref=e182]:
+              - link "Free Practice Questions" [ref=e183] [cursor=pointer]:
+                - /url: /practice-questions
+            - listitem [ref=e184]:
+              - link "Certifications" [ref=e185] [cursor=pointer]:
+                - /url: /certifications
+            - listitem [ref=e186]:
+              - link "Pass Guarantee" [ref=e187] [cursor=pointer]:
+                - /url: /guarantee
+        - generic [ref=e188]:
+          - paragraph [ref=e189]: Company
+          - list [ref=e190]:
+            - listitem [ref=e191]:
+              - link "Affiliates" [ref=e192] [cursor=pointer]:
+                - /url: /affiliates
+            - listitem [ref=e193]:
+              - link "Gift Cards" [ref=e194] [cursor=pointer]:
+                - /url: /gift
+        - generic [ref=e195]:
+          - generic [ref=e196]:
+            - img [ref=e198]
+            - generic [ref=e201]: CertForge
+          - paragraph [ref=e202]: © 2026 CertForge. Not affiliated with Amazon Web Services.
+  - region "Notifications alt+T"
+  - alert [ref=e203]

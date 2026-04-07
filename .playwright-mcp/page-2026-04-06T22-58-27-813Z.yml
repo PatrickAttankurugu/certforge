@@ -1,0 +1,203 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "CertForge" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img [ref=e7]
+          - generic [ref=e10]: CertForge
+        - generic [ref=e11]:
+          - link "Pass Guarantee" [ref=e12] [cursor=pointer]:
+            - /url: /guarantee
+          - link "Teams" [ref=e13] [cursor=pointer]:
+            - /url: /teams
+          - link "Certifications" [ref=e14] [cursor=pointer]:
+            - /url: /certifications
+          - link "Lifetime Access" [ref=e15] [cursor=pointer]:
+            - /url: /lifetime
+        - generic [ref=e16]:
+          - link "Sign in" [ref=e17] [cursor=pointer]:
+            - /url: /login
+            - button "Sign in" [ref=e18]
+          - link "Start Free" [ref=e19] [cursor=pointer]:
+            - /url: /signup
+            - button "Start Free" [ref=e20]:
+              - text: Start Free
+              - img
+    - main [ref=e21]:
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - generic [ref=e24]:
+            - img
+            - text: 100% Money-Back Guarantee
+          - heading "Pass the AWS SAA-C03 or your money back" [level=1] [ref=e25]
+          - paragraph [ref=e26]: We are so confident in CertForge that we guarantee you will pass the AWS Solutions Architect Associate exam. If you follow the plan and don't pass, we will refund every penny.
+          - link "Start Premium Free Trial" [ref=e27] [cursor=pointer]:
+            - /url: /signup
+            - button "Start Premium Free Trial" [ref=e28]:
+              - text: Start Premium Free Trial
+              - img
+        - generic [ref=e29]:
+          - heading "How the Pass Guarantee Works" [level=2] [ref=e30]
+          - generic [ref=e31]:
+            - generic [ref=e32]:
+              - generic [ref=e33]: "1"
+              - img [ref=e34]
+              - heading "Sign Up for Premium" [level=3] [ref=e36]
+              - paragraph [ref=e37]: Subscribe to the Premium plan ($59/mo) to unlock the full pass guarantee.
+            - generic [ref=e38]:
+              - generic [ref=e39]: "2"
+              - img [ref=e40]
+              - heading "Complete 80%+ Questions" [level=3] [ref=e42]
+              - paragraph [ref=e43]: Work through at least 80% of all available practice questions across all 4 domains.
+            - generic [ref=e44]:
+              - generic [ref=e45]: "3"
+              - img [ref=e46]
+              - heading "Take 3+ Mock Exams" [level=3] [ref=e50]
+              - paragraph [ref=e51]: Complete at least 3 full mock exams scoring 600 or higher on each attempt.
+            - generic [ref=e52]:
+              - generic [ref=e53]: "4"
+              - img [ref=e54]
+              - heading "Pass or Get Refunded" [level=3] [ref=e57]
+              - paragraph [ref=e58]: Take the real exam. If you don't pass, send us your score report for a full refund.
+        - generic [ref=e61]:
+          - heading "Guarantee Requirements" [level=2] [ref=e62]:
+            - img [ref=e63]
+            - text: Guarantee Requirements
+          - list [ref=e66]:
+            - listitem [ref=e67]:
+              - img [ref=e68]
+              - text: Active Premium plan subscription for at least 30 days before your exam date
+            - listitem [ref=e71]:
+              - img [ref=e72]
+              - text: Completed at least 80% of all available practice questions
+            - listitem [ref=e75]:
+              - img [ref=e76]
+              - text: Taken at least 3 full mock exams with scores of 600 or above
+            - listitem [ref=e79]:
+              - img [ref=e80]
+              - text: Exam taken within 60 days of your last study session
+            - listitem [ref=e83]:
+              - img [ref=e84]
+              - text: Submit your official AWS score report showing a failing score within 14 days
+        - generic [ref=e88]:
+          - generic [ref=e89]:
+            - img [ref=e90]
+            - generic [ref=e92]: Full Refund Guaranteed
+          - generic [ref=e93]:
+            - img [ref=e94]
+            - generic [ref=e97]: Secure Payment
+          - generic [ref=e98]:
+            - img [ref=e99]
+            - generic [ref=e104]: 10,000+ Passed
+          - generic [ref=e105]:
+            - img [ref=e106]
+            - generic [ref=e108]: 4.9/5 Rating
+        - generic [ref=e109]:
+          - heading "Engineers Who Used the Guarantee" [level=2] [ref=e110]
+          - generic [ref=e111]:
+            - generic [ref=e113]:
+              - generic [ref=e114]:
+                - img [ref=e115]
+                - img [ref=e117]
+                - img [ref=e119]
+                - img [ref=e121]
+                - img [ref=e123]
+              - paragraph [ref=e125]: “I studied for 4 weeks, scored 810. The guarantee gave me the confidence to commit to the Premium plan.”
+              - generic [ref=e126]:
+                - paragraph [ref=e127]: David L.
+                - paragraph [ref=e128]: Cloud Architect
+            - generic [ref=e130]:
+              - generic [ref=e131]:
+                - img [ref=e132]
+                - img [ref=e134]
+                - img [ref=e136]
+                - img [ref=e138]
+                - img [ref=e140]
+              - paragraph [ref=e142]: “The mock exams were so close to the real exam. I passed on my first try and never needed the refund.”
+              - generic [ref=e143]:
+                - paragraph [ref=e144]: Anna M.
+                - paragraph [ref=e145]: DevOps Engineer
+            - generic [ref=e147]:
+              - generic [ref=e148]:
+                - img [ref=e149]
+                - img [ref=e151]
+                - img [ref=e153]
+                - img [ref=e155]
+                - img [ref=e157]
+              - paragraph [ref=e159]: “Knowing there was a money-back guarantee removed all the pressure. I could focus purely on learning.”
+              - generic [ref=e160]:
+                - paragraph [ref=e161]: James W.
+                - paragraph [ref=e162]: Solutions Architect
+        - generic [ref=e163]:
+          - heading "Guarantee FAQ" [level=2] [ref=e164]
+          - generic [ref=e165]:
+            - generic [ref=e167]:
+              - heading "What if I fail and meet all the requirements?" [level=3] [ref=e168]
+              - paragraph [ref=e169]: Email us at support@certforge.dev with your AWS score report within 14 days of your exam. We will process a full refund within 5 business days.
+            - generic [ref=e171]:
+              - heading "Does the guarantee apply to monthly or annual plans?" [level=3] [ref=e172]
+              - paragraph [ref=e173]: The guarantee applies to the Premium plan only, whether you pay monthly or annually.
+            - generic [ref=e175]:
+              - heading "Can I use the guarantee more than once?" [level=3] [ref=e176]
+              - paragraph [ref=e177]: The guarantee covers one exam attempt per subscription period.
+            - generic [ref=e179]:
+              - heading "What counts as \"80% of questions\"?" [level=3] [ref=e180]
+              - paragraph [ref=e181]: You need to have answered at least 80% of the unique questions in our database at least once. Your progress dashboard tracks this percentage.
+            - generic [ref=e183]:
+              - heading "What if my mock exam scores are below 600?" [level=3] [ref=e184]
+              - paragraph [ref=e185]: Keep studying! The guarantee requires at least 3 mock exams scoring 600+. This threshold ensures you are genuinely prepared before attempting the real exam.
+        - generic [ref=e186]:
+          - heading "Ready to pass with confidence?" [level=2] [ref=e187]
+          - paragraph [ref=e188]: Start your Premium trial today. Your certification is guaranteed.
+          - link "Start Premium Free Trial" [ref=e189] [cursor=pointer]:
+            - /url: /signup
+            - button "Start Premium Free Trial" [ref=e190]:
+              - text: Start Premium Free Trial
+              - img
+          - paragraph [ref=e191]: 7-day free trial. Cancel anytime.
+    - contentinfo [ref=e192]:
+      - generic [ref=e193]:
+        - generic [ref=e194]:
+          - paragraph [ref=e195]: Product
+          - list [ref=e196]:
+            - listitem [ref=e197]:
+              - link "Features" [ref=e198] [cursor=pointer]:
+                - /url: /#features
+            - listitem [ref=e199]:
+              - link "Pricing" [ref=e200] [cursor=pointer]:
+                - /url: /#pricing
+            - listitem [ref=e201]:
+              - link "Lifetime Access" [ref=e202] [cursor=pointer]:
+                - /url: /lifetime
+            - listitem [ref=e203]:
+              - link "Teams" [ref=e204] [cursor=pointer]:
+                - /url: /teams
+        - generic [ref=e205]:
+          - paragraph [ref=e206]: Resources
+          - list [ref=e207]:
+            - listitem [ref=e208]:
+              - link "Free Practice Questions" [ref=e209] [cursor=pointer]:
+                - /url: /practice-questions
+            - listitem [ref=e210]:
+              - link "Certifications" [ref=e211] [cursor=pointer]:
+                - /url: /certifications
+            - listitem [ref=e212]:
+              - link "Pass Guarantee" [ref=e213] [cursor=pointer]:
+                - /url: /guarantee
+        - generic [ref=e214]:
+          - paragraph [ref=e215]: Company
+          - list [ref=e216]:
+            - listitem [ref=e217]:
+              - link "Affiliates" [ref=e218] [cursor=pointer]:
+                - /url: /affiliates
+            - listitem [ref=e219]:
+              - link "Gift Cards" [ref=e220] [cursor=pointer]:
+                - /url: /gift
+        - generic [ref=e221]:
+          - generic [ref=e222]:
+            - img [ref=e224]
+            - generic [ref=e227]: CertForge
+          - paragraph [ref=e228]: © 2026 CertForge. Not affiliated with Amazon Web Services.
+  - region "Notifications alt+T"
+  - alert [ref=e229]

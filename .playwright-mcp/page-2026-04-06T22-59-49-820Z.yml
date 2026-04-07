@@ -1,0 +1,509 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - paragraph [ref=e5]:
+      - img [ref=e6]
+      - text: AWS just updated the SAA-C03 exam guide for 2026 — Our questions are already updated.
+      - link "Start studying now →" [ref=e8] [cursor=pointer]:
+        - /url: /signup
+    - navigation [ref=e9]:
+      - generic [ref=e10]:
+        - generic [ref=e11]:
+          - img [ref=e13]
+          - generic [ref=e16]: CertForge
+        - generic [ref=e17]:
+          - link "How It Works" [ref=e18] [cursor=pointer]:
+            - /url: "#how-it-works"
+          - link "Features" [ref=e19] [cursor=pointer]:
+            - /url: "#features"
+          - link "Pricing" [ref=e20] [cursor=pointer]:
+            - /url: "#pricing"
+          - link "Certifications" [ref=e21] [cursor=pointer]:
+            - /url: /certifications
+          - link "FAQ" [ref=e22] [cursor=pointer]:
+            - /url: "#faq"
+        - generic [ref=e23]:
+          - link "Sign in" [ref=e24] [cursor=pointer]:
+            - /url: /login
+            - button "Sign in" [ref=e25]
+          - link "Start Free" [ref=e26] [cursor=pointer]:
+            - /url: /signup
+            - button "Start Free" [ref=e27]:
+              - text: Start Free
+              - img
+    - generic [ref=e30]:
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - img
+          - text: Updated for the 2026 SAA-C03 Exam
+        - heading "Pass the AWS Solutions Architect exam on your first attempt" [level=1] [ref=e33]
+        - paragraph [ref=e34]:
+          - text: Stop wasting weeks on random practice dumps. CertForge's AI learns your weak spots and builds a study plan that gets you exam-ready in
+          - strong [ref=e35]: half the time
+          - text: .
+        - generic [ref=e36]:
+          - generic [ref=e37]:
+            - generic [ref=e41]: J
+            - generic [ref=e42]: A
+          - generic [ref=e43]:
+            - strong [ref=e44]: 10,247
+            - text: engineers passed with CertForge
+        - generic [ref=e45]:
+          - link "Start Studying Free" [ref=e46] [cursor=pointer]:
+            - /url: /signup
+            - button "Start Studying Free" [ref=e47]:
+              - text: Start Studying Free
+              - img
+          - link "See How It Works" [ref=e48] [cursor=pointer]:
+            - /url: "#how-it-works"
+            - button "See How It Works" [ref=e49]
+        - generic [ref=e50]:
+          - generic [ref=e51]:
+            - img [ref=e52]
+            - text: Free forever tier
+          - generic [ref=e55]:
+            - img [ref=e56]
+            - text: No credit card
+          - generic [ref=e59]:
+            - img [ref=e60]
+            - text: Cancel anytime
+      - generic [ref=e63]:
+        - generic [ref=e64]:
+          - img "Cloud engineer studying for AWS certification" [ref=e65]
+          - generic [ref=e68]:
+            - generic [ref=e69]:
+              - img [ref=e71]
+              - generic [ref=e74]:
+                - paragraph [ref=e75]: Predicted Score
+                - paragraph [ref=e76]: Ready to pass!
+            - paragraph [ref=e77]: "842"
+        - generic [ref=e79]:
+          - img [ref=e80]
+          - generic [ref=e82]: 12 day streak
+    - generic [ref=e84]:
+      - generic [ref=e85]:
+        - img [ref=e87]
+        - paragraph [ref=e89]: 2,400+
+        - paragraph [ref=e90]: Expert-Written Questions
+      - generic [ref=e91]:
+        - img [ref=e93]
+        - paragraph [ref=e96]: 94%
+        - paragraph [ref=e97]: First-Attempt Pass Rate
+      - generic [ref=e98]:
+        - img [ref=e100]
+        - paragraph [ref=e105]: 10K+
+        - paragraph [ref=e106]: Engineers Certified
+      - generic [ref=e107]:
+        - img [ref=e109]
+        - paragraph [ref=e111]: 4.9/5
+        - paragraph [ref=e112]: Student Rating
+    - generic [ref=e114]:
+      - heading "Sound familiar?" [level=2] [ref=e115]
+      - paragraph [ref=e116]: Most SAA-C03 prep tools waste your time. You deserve better.
+      - generic [ref=e117]:
+        - generic [ref=e118]:
+          - img [ref=e119]
+          - paragraph [ref=e123]: Studying for months with no idea if you're actually ready
+        - generic [ref=e124]:
+          - img [ref=e125]
+          - paragraph [ref=e129]: Reviewing the same easy topics while weak areas stay weak
+        - generic [ref=e130]:
+          - img [ref=e131]
+          - paragraph [ref=e135]: Using outdated question dumps that don't match the real exam
+        - generic [ref=e136]:
+          - img [ref=e137]
+          - paragraph [ref=e141]: Paying $300+ for the exam only to fail and reschedule
+      - generic [ref=e142]:
+        - paragraph [ref=e143]: There's a better way.
+        - img [ref=e144]
+    - generic [ref=e147]:
+      - heading "Exam-ready in 3 simple steps" [level=2] [ref=e148]
+      - paragraph [ref=e149]: No complex setup. No information overload. Just a proven system that works.
+      - generic [ref=e150]:
+        - generic [ref=e151]:
+          - generic [ref=e152]:
+            - img "Take a Diagnostic" [ref=e153]
+            - generic [ref=e155]: "1"
+          - heading "Take a Diagnostic" [level=3] [ref=e156]
+          - paragraph [ref=e157]: Answer a few questions and our AI instantly maps your strengths and gaps across all 4 SAA-C03 domains.
+          - generic [ref=e158]: ~ 5 minutes
+        - generic [ref=e159]:
+          - generic [ref=e160]:
+            - img "Study Smarter, Not Harder" [ref=e161]
+            - generic [ref=e163]: "2"
+          - heading "Study Smarter, Not Harder" [level=3] [ref=e164]
+          - paragraph [ref=e165]: Our FSRS algorithm feeds you the right questions at the right time. AI explains every mistake so you actually learn.
+          - generic [ref=e166]: 20 min/day
+        - generic [ref=e167]:
+          - generic [ref=e168]:
+            - img "Know When You're Ready" [ref=e169]
+            - generic [ref=e171]: "3"
+          - heading "Know When You're Ready" [level=3] [ref=e172]
+          - paragraph [ref=e173]: Our score predictor tells you your projected exam score. When it says go, you pass. Simple.
+          - generic [ref=e174]: 94% pass rate
+    - generic [ref=e176]:
+      - heading "Everything you need. Nothing you don't." [level=2] [ref=e177]
+      - paragraph [ref=e178]: Built by AWS-certified engineers who know exactly what the SAA-C03 exam demands.
+      - generic [ref=e179]:
+        - generic [ref=e182]:
+          - img [ref=e184]
+          - heading "FSRS Spaced Repetition" [level=3] [ref=e192]
+          - paragraph [ref=e193]: The same algorithm Anki uses. Questions resurface exactly when you're about to forget — study 60% less and remember more.
+        - generic [ref=e196]:
+          - img [ref=e198]
+          - heading "Adaptive Difficulty" [level=3] [ref=e200]
+          - paragraph [ref=e201]: Questions adjust to your skill level. Crushing a topic? We move on. Struggling? We drill deeper with 3x attention.
+        - generic [ref=e204]:
+          - img [ref=e206]
+          - heading "AI Tutor (Claude-Powered)" [level=3] [ref=e209]
+          - paragraph [ref=e210]: Ask anything about any AWS service. Get exam-focused explanations instantly — like having a Solutions Architect on call 24/7.
+        - generic [ref=e213]:
+          - img [ref=e215]
+          - heading "Realistic Mock Exams" [level=3] [ref=e219]
+          - paragraph [ref=e220]: 65 questions, 130 minutes — matches the real exam format exactly. Score prediction within 30 points of actual.
+        - generic [ref=e223]:
+          - img [ref=e225]
+          - heading "Score Prediction" [level=3] [ref=e228]
+          - paragraph [ref=e229]: Know your projected exam score at all times. Track accuracy across all 4 domains and know exactly when you're ready.
+        - generic [ref=e232]:
+          - img [ref=e234]
+          - heading "Streaks & Daily Goals" [level=3] [ref=e236]
+          - paragraph [ref=e237]: Consistency beats cramming. Set a daily goal, build a streak, and watch your predicted score climb day by day.
+    - generic [ref=e240]:
+      - img "CertForge platform interface" [ref=e241]
+      - generic [ref=e244]:
+        - generic [ref=e245]:
+          - img [ref=e246]
+          - img [ref=e248]
+        - heading "Study anywhere, on any device" [level=3] [ref=e250]
+        - paragraph [ref=e251]: Fully responsive — desktop, tablet, or phone. Study during your commute, lunch break, or wherever.
+    - generic [ref=e253]:
+      - generic [ref=e254]:
+        - heading "Complete SAA-C03 Domain Coverage" [level=2] [ref=e255]
+        - paragraph [ref=e256]: 2,400+ questions mapped to the exact exam blueprint — weighted by domain importance
+      - generic [ref=e257]:
+        - generic [ref=e259]:
+          - img [ref=e260]
+          - paragraph [ref=e262]: 30%
+          - paragraph [ref=e263]: Design Secure Architectures
+          - paragraph [ref=e264]: 720+ questions
+        - generic [ref=e266]:
+          - img [ref=e267]
+          - paragraph [ref=e269]: 26%
+          - paragraph [ref=e270]: Design Resilient Architectures
+          - paragraph [ref=e271]: 624+ questions
+        - generic [ref=e273]:
+          - img [ref=e274]
+          - paragraph [ref=e276]: 24%
+          - paragraph [ref=e277]: High-Performing Architectures
+          - paragraph [ref=e278]: 576+ questions
+        - generic [ref=e280]:
+          - img [ref=e281]
+          - paragraph [ref=e285]: 20%
+          - paragraph [ref=e286]: Cost-Optimized Architectures
+          - paragraph [ref=e287]: 480+ questions
+    - generic [ref=e289]:
+      - heading "Why engineers switch to CertForge" [level=2] [ref=e290]
+      - paragraph [ref=e291]: See how we compare to the old way of studying.
+      - generic [ref=e292]:
+        - generic [ref=e294]:
+          - paragraph [ref=e295]:
+            - img [ref=e296]
+            - text: Traditional Prep
+          - list [ref=e300]:
+            - listitem [ref=e301]:
+              - img [ref=e302]
+              - text: Random question dumps
+            - listitem [ref=e306]:
+              - img [ref=e307]
+              - text: No idea what to study next
+            - listitem [ref=e311]:
+              - img [ref=e312]
+              - text: Generic explanations
+            - listitem [ref=e316]:
+              - img [ref=e317]
+              - text: No score prediction
+            - listitem [ref=e321]:
+              - img [ref=e322]
+              - text: Study 2-3 months
+            - listitem [ref=e326]:
+              - img [ref=e327]
+              - text: Costly retakes ($300+)
+        - generic [ref=e332]:
+          - paragraph [ref=e333]:
+            - img [ref=e334]
+            - text: CertForge
+          - list [ref=e337]:
+            - listitem [ref=e338]:
+              - img [ref=e339]
+              - text: AI-targeted weak areas
+            - listitem [ref=e342]:
+              - img [ref=e343]
+              - text: Smart study plan daily
+            - listitem [ref=e346]:
+              - img [ref=e347]
+              - text: AI explains every mistake
+            - listitem [ref=e350]:
+              - img [ref=e351]
+              - text: Accurate score prediction
+            - listitem [ref=e354]:
+              - img [ref=e355]
+              - text: Exam-ready in 3-4 weeks
+            - listitem [ref=e358]:
+              - img [ref=e359]
+              - text: Pass first attempt (94%)
+    - generic [ref=e363]:
+      - heading "Engineers who passed with CertForge" [level=2] [ref=e364]
+      - paragraph [ref=e365]: Real scores. Real results. Real people.
+      - generic [ref=e366]:
+        - generic [ref=e368]:
+          - generic [ref=e369]:
+            - img [ref=e370]
+            - img [ref=e372]
+            - img [ref=e374]
+            - img [ref=e376]
+            - img [ref=e378]
+          - paragraph [ref=e380]: “The AI tutor felt like having a personal instructor. I studied for 3 weeks and scored 842. The score predictor said I'd get 830 — it was almost exact.”
+          - generic [ref=e381]:
+            - generic [ref=e382]:
+              - img "Sarah K." [ref=e384]
+              - generic [ref=e385]:
+                - paragraph [ref=e386]: Sarah K.
+                - paragraph [ref=e387]: Cloud Engineer at Datadog
+            - generic [ref=e388]:
+              - generic [ref=e389]: "842"
+              - paragraph [ref=e390]: 3 weeks
+        - generic [ref=e392]:
+          - generic [ref=e393]:
+            - img [ref=e394]
+            - img [ref=e396]
+            - img [ref=e398]
+            - img [ref=e400]
+            - img [ref=e402]
+          - paragraph [ref=e404]: “I failed my first attempt with another platform. Switched to CertForge, studied for 2 more weeks focusing on my weak areas, and passed with a 790.”
+          - generic [ref=e405]:
+            - generic [ref=e406]:
+              - img "Michael T." [ref=e408]
+              - generic [ref=e409]:
+                - paragraph [ref=e410]: Michael T.
+                - paragraph [ref=e411]: DevOps Engineer at Stripe
+            - generic [ref=e412]:
+              - generic [ref=e413]: "790"
+              - paragraph [ref=e414]: 2 weeks
+        - generic [ref=e416]:
+          - generic [ref=e417]:
+            - img [ref=e418]
+            - img [ref=e420]
+            - img [ref=e422]
+            - img [ref=e424]
+            - img [ref=e426]
+          - paragraph [ref=e428]: “The mock exams are incredibly realistic. The spaced repetition meant I actually retained what I learned instead of cramming and forgetting.”
+          - generic [ref=e429]:
+            - generic [ref=e430]:
+              - img "Priya R." [ref=e432]
+              - generic [ref=e433]:
+                - paragraph [ref=e434]: Priya R.
+                - paragraph [ref=e435]: Solutions Architect at AWS
+            - generic [ref=e436]:
+              - generic [ref=e437]: "876"
+              - paragraph [ref=e438]: 4 weeks
+    - generic [ref=e440]:
+      - generic [ref=e441]:
+        - img [ref=e442]
+        - generic [ref=e444]: SOC 2 Compliant Hosting
+      - generic [ref=e445]:
+        - img [ref=e446]
+        - generic [ref=e449]: Updated Weekly for 2026
+      - generic [ref=e450]:
+        - img [ref=e451]
+        - generic [ref=e454]: Bank-Grade Encryption
+      - generic [ref=e455]:
+        - img [ref=e456]
+        - generic [ref=e460]: 7-Day Money Back
+    - generic [ref=e462]:
+      - heading "Invest in your career. Not another exam retake." [level=2] [ref=e463]
+      - paragraph [ref=e464]:
+        - text: The average failed AWS exam costs
+        - strong [ref=e465]: $300 + weeks of lost time
+        - text: . CertForge pays for itself with a single passed attempt.
+      - generic [ref=e466]:
+        - generic [ref=e468]:
+          - generic [ref=e469]:
+            - paragraph [ref=e470]: Free
+            - paragraph [ref=e471]: Get a taste of the platform
+          - generic [ref=e472]:
+            - paragraph [ref=e473]: $0
+            - paragraph [ref=e474]: forever
+          - list [ref=e475]:
+            - listitem [ref=e476]:
+              - img [ref=e477]
+              - text: 10 questions/day
+            - listitem [ref=e480]:
+              - img [ref=e481]
+              - text: 3 AI explanations/day
+            - listitem [ref=e484]:
+              - img [ref=e485]
+              - text: 1 mock exam/month
+            - listitem [ref=e488]:
+              - img [ref=e489]
+              - text: FSRS spaced repetition
+            - listitem [ref=e492]:
+              - img [ref=e493]
+              - text: AI Tutor
+            - listitem [ref=e497]:
+              - img [ref=e498]
+              - text: Score prediction
+          - link "Get Started Free" [ref=e502] [cursor=pointer]:
+            - /url: /signup
+            - button "Get Started Free" [ref=e503]
+        - generic [ref=e504]:
+          - generic [ref=e506]:
+            - img
+            - text: Most Popular
+          - generic [ref=e507]:
+            - generic [ref=e508]:
+              - paragraph [ref=e509]: Standard
+              - paragraph [ref=e510]: Everything you need to pass
+            - generic [ref=e511]:
+              - paragraph [ref=e512]: $29/mo
+              - paragraph [ref=e513]: Less than a single exam retake
+            - list [ref=e514]:
+              - listitem [ref=e515]:
+                - img [ref=e516]
+                - strong [ref=e519]: Unlimited
+                - text: questions
+              - listitem [ref=e520]:
+                - img [ref=e521]
+                - strong [ref=e524]: Unlimited
+                - text: AI explanations
+              - listitem [ref=e525]:
+                - img [ref=e526]
+                - text: 5 mock exams/month
+              - listitem [ref=e529]:
+                - img [ref=e530]
+                - text: AI Tutor (20 msgs/day)
+              - listitem [ref=e533]:
+                - img [ref=e534]
+                - text: Score prediction
+              - listitem [ref=e537]:
+                - img [ref=e538]
+                - text: Weak area reports
+            - link "Start 7-Day Free Trial" [ref=e541] [cursor=pointer]:
+              - /url: /signup
+              - button "Start 7-Day Free Trial" [ref=e542]
+            - paragraph [ref=e543]: 7-day money-back guarantee
+        - generic [ref=e545]:
+          - generic [ref=e546]:
+            - paragraph [ref=e547]: Premium
+            - paragraph [ref=e548]: For serious speed-runners
+          - generic [ref=e549]:
+            - paragraph [ref=e550]: $59/mo
+            - paragraph [ref=e551]: Maximum preparation power
+          - list [ref=e552]:
+            - listitem [ref=e553]:
+              - img [ref=e554]
+              - text: Everything in Standard
+            - listitem [ref=e557]:
+              - img [ref=e558]
+              - strong [ref=e561]: Unlimited
+              - text: mock exams
+            - listitem [ref=e562]:
+              - img [ref=e563]
+              - strong [ref=e566]: Unlimited
+              - text: AI Tutor
+            - listitem [ref=e567]:
+              - img [ref=e568]
+              - text: AI question generation
+            - listitem [ref=e571]:
+              - img [ref=e572]
+              - text: Priority support
+            - listitem [ref=e575]:
+              - img [ref=e576]
+              - text: Shareable score badges
+          - link "Start 7-Day Free Trial" [ref=e579] [cursor=pointer]:
+            - /url: /signup
+            - button "Start 7-Day Free Trial" [ref=e580]
+          - paragraph [ref=e581]: 7-day money-back guarantee
+      - generic [ref=e582]:
+        - link "Pass Guarantee →" [ref=e583] [cursor=pointer]:
+          - /url: /guarantee
+        - link "Team Plans →" [ref=e584] [cursor=pointer]:
+          - /url: /teams
+        - link "Lifetime Access →" [ref=e585] [cursor=pointer]:
+          - /url: /lifetime
+    - generic [ref=e587]:
+      - generic [ref=e588]:
+        - img [ref=e589]
+        - heading "Pass Guarantee" [level=2] [ref=e591]
+      - paragraph [ref=e592]:
+        - text: Premium members who complete 80%+ of questions and score 600+ on 3 mock exams are guaranteed to pass the AWS SAA-C03 — or get a
+        - strong [ref=e593]: full refund
+        - text: .
+      - link "Learn About Our Guarantee" [ref=e594] [cursor=pointer]:
+        - /url: /guarantee
+        - button "Learn About Our Guarantee" [ref=e595]:
+          - text: Learn About Our Guarantee
+          - img
+    - generic [ref=e597]:
+      - heading "Still on the fence?" [level=3] [ref=e598]
+      - generic [ref=e599]:
+        - generic [ref=e601]:
+          - paragraph [ref=e602]: "\"What if I'm not ready yet?\""
+          - paragraph [ref=e603]: That's exactly what CertForge is for. Start with the free tier, practice daily, and our score predictor will tell you when you're ready.
+        - generic [ref=e605]:
+          - paragraph [ref=e606]: "\"What if it doesn't work?\""
+          - paragraph [ref=e607]: 7-day money-back guarantee on all paid plans. If you don't love it, email us for a full refund. No questions asked.
+        - generic [ref=e609]:
+          - paragraph [ref=e610]: "\"I've tried others...\""
+          - paragraph [ref=e611]: 94% first-attempt pass rate. The difference is AI-powered spaced repetition — science, not guesswork.
+    - generic [ref=e613]:
+      - heading "Frequently Asked Questions" [level=2] [ref=e614]
+      - generic [ref=e615]:
+        - generic [ref=e617]:
+          - heading "How is CertForge different from Tutorials Dojo, Whizlabs, etc.?" [level=3] [ref=e618]
+          - paragraph [ref=e619]: CertForge uses FSRS spaced repetition combined with AI-powered explanations and adaptive difficulty. Instead of memorizing random questions, you focus on exactly what you need to learn, when you need to learn it.
+        - generic [ref=e621]:
+          - heading "How many practice questions are included?" [level=3] [ref=e622]
+          - paragraph [ref=e623]: 2,400+ expert-written questions covering all 4 SAA-C03 domains and 37 topics. Questions are updated weekly. Premium users can also generate unlimited AI questions.
+        - generic [ref=e625]:
+          - heading "How long does it take to be exam-ready?" [level=3] [ref=e626]
+          - paragraph [ref=e627]: Most users report being exam-ready in 3-4 weeks of consistent daily study (20-30 min/day). Our score predictor tells you exactly when you're ready.
+        - generic [ref=e629]:
+          - heading "What if I fail? Do you offer a guarantee?" [level=3] [ref=e630]
+          - paragraph [ref=e631]: All paid plans include a 7-day money-back guarantee. Email us within 7 days for a full refund, no questions asked.
+        - generic [ref=e633]:
+          - heading "Can I use CertForge on mobile?" [level=3] [ref=e634]
+          - paragraph [ref=e635]: Yes! CertForge is fully responsive and works beautifully on phones and tablets.
+        - generic [ref=e637]:
+          - heading "Is the content up to date for 2026?" [level=3] [ref=e638]
+          - paragraph [ref=e639]: Absolutely. Our questions are continuously updated to match the latest SAA-C03 exam guide.
+    - generic [ref=e642]:
+      - heading "Your AWS certification is one decision away" [level=2] [ref=e643]
+      - paragraph [ref=e644]: 10,000+ engineers already made that decision. Start with the free tier — you have nothing to lose and a certification to gain.
+      - link "Start Studying Free" [ref=e645] [cursor=pointer]:
+        - /url: /signup
+        - button "Start Studying Free" [ref=e646]:
+          - text: Start Studying Free
+          - img
+      - paragraph [ref=e647]: Free forever tier · No credit card required · Set up in 30 seconds
+    - contentinfo [ref=e648]:
+      - generic [ref=e649]:
+        - generic [ref=e650]:
+          - img [ref=e652]
+          - generic [ref=e655]: CertForge
+        - paragraph [ref=e656]: © 2026 CertForge. Not affiliated with Amazon Web Services.
+        - generic [ref=e657]:
+          - link "Sign In" [ref=e658] [cursor=pointer]:
+            - /url: /login
+          - link "Get Started" [ref=e659] [cursor=pointer]:
+            - /url: /signup
+          - link "Pricing" [ref=e660] [cursor=pointer]:
+            - /url: "#pricing"
+          - link "Guarantee" [ref=e661] [cursor=pointer]:
+            - /url: /guarantee
+          - link "Teams" [ref=e662] [cursor=pointer]:
+            - /url: /teams
+          - link "Certifications" [ref=e663] [cursor=pointer]:
+            - /url: /certifications
+          - link "Free Questions" [ref=e664] [cursor=pointer]:
+            - /url: /practice-questions
+  - region "Notifications alt+T"

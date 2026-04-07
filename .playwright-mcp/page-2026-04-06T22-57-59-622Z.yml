@@ -1,0 +1,122 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "CertForge" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img [ref=e7]
+          - generic [ref=e10]: CertForge
+        - generic [ref=e11]:
+          - link "Practice Questions" [ref=e12] [cursor=pointer]:
+            - /url: /practice-questions
+          - link "Pricing" [ref=e13] [cursor=pointer]:
+            - /url: /#pricing
+        - generic [ref=e14]:
+          - link "Sign in" [ref=e15] [cursor=pointer]:
+            - /url: /login
+            - button "Sign in" [ref=e16]
+          - link "Start Free" [ref=e17] [cursor=pointer]:
+            - /url: /signup
+            - button "Start Free" [ref=e18]:
+              - text: Start Free
+              - img
+    - main [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - generic [ref=e22]:
+            - img
+            - text: Free Practice Questions
+          - heading "Free AWS SAA-C03 Practice Questions" [level=1] [ref=e23]
+          - paragraph [ref=e24]: Test your knowledge with free sample questions from all 4 domains of the AWS Solutions Architect Associate (SAA-C03) exam. Each question includes a detailed explanation.
+        - generic [ref=e25]:
+          - heading "Choose a Domain" [level=2] [ref=e26]
+          - generic [ref=e27]:
+            - link "Design Secure Architectures 30% of exam 720+ questions IAM, encryption, VPC security, AWS Organizations, and access control policies. 5 free sample questions available" [ref=e28] [cursor=pointer]:
+              - /url: /practice-questions/secure
+              - generic [ref=e30]:
+                - generic [ref=e31]:
+                  - img [ref=e33]
+                  - generic [ref=e35]:
+                    - heading "Design Secure Architectures" [level=3] [ref=e36]
+                    - generic [ref=e37]:
+                      - generic [ref=e38]: 30% of exam
+                      - generic [ref=e39]: 720+ questions
+                  - img [ref=e40]
+                - paragraph [ref=e42]: IAM, encryption, VPC security, AWS Organizations, and access control policies.
+                - paragraph [ref=e43]: 5 free sample questions available
+            - link "Design Resilient Architectures 26% of exam 624+ questions Multi-AZ, Auto Scaling, decoupled architectures, disaster recovery, and backups. 5 free sample questions available" [ref=e44] [cursor=pointer]:
+              - /url: /practice-questions/resilient
+              - generic [ref=e46]:
+                - generic [ref=e47]:
+                  - img [ref=e49]
+                  - generic [ref=e51]:
+                    - heading "Design Resilient Architectures" [level=3] [ref=e52]
+                    - generic [ref=e53]:
+                      - generic [ref=e54]: 26% of exam
+                      - generic [ref=e55]: 624+ questions
+                  - img [ref=e56]
+                - paragraph [ref=e58]: Multi-AZ, Auto Scaling, decoupled architectures, disaster recovery, and backups.
+                - paragraph [ref=e59]: 5 free sample questions available
+            - link "Design High-Performing Architectures 24% of exam 576+ questions Caching, CDN, database optimization, serverless compute, and data transfer. 5 free sample questions available" [ref=e60] [cursor=pointer]:
+              - /url: /practice-questions/performant
+              - generic [ref=e62]:
+                - generic [ref=e63]:
+                  - img [ref=e65]
+                  - generic [ref=e67]:
+                    - heading "Design High-Performing Architectures" [level=3] [ref=e68]
+                    - generic [ref=e69]:
+                      - generic [ref=e70]: 24% of exam
+                      - generic [ref=e71]: 576+ questions
+                  - img [ref=e72]
+                - paragraph [ref=e74]: Caching, CDN, database optimization, serverless compute, and data transfer.
+                - paragraph [ref=e75]: 5 free sample questions available
+            - link "Design Cost-Optimized Architectures 20% of exam 480+ questions Spot Instances, Reserved Instances, S3 storage classes, and right-sizing strategies. 5 free sample questions available" [ref=e76] [cursor=pointer]:
+              - /url: /practice-questions/cost
+              - generic [ref=e78]:
+                - generic [ref=e79]:
+                  - img [ref=e81]
+                  - generic [ref=e85]:
+                    - heading "Design Cost-Optimized Architectures" [level=3] [ref=e86]
+                    - generic [ref=e87]:
+                      - generic [ref=e88]: 20% of exam
+                      - generic [ref=e89]: 480+ questions
+                  - img [ref=e90]
+                - paragraph [ref=e92]: Spot Instances, Reserved Instances, S3 storage classes, and right-sizing strategies.
+                - paragraph [ref=e93]: 5 free sample questions available
+        - generic [ref=e94]:
+          - heading "Want unlimited practice questions?" [level=2] [ref=e95]
+          - paragraph [ref=e96]: Sign up for free to access 10 questions per day with FSRS spaced repetition. Upgrade to Premium for unlimited questions and AI explanations.
+          - generic [ref=e97]:
+            - link "Sign Up Free" [ref=e98] [cursor=pointer]:
+              - /url: /signup
+              - button "Sign Up Free" [ref=e99]:
+                - text: Sign Up Free
+                - img
+            - link "View Pricing" [ref=e100] [cursor=pointer]:
+              - /url: /#pricing
+              - button "View Pricing" [ref=e101]
+          - generic [ref=e102]:
+            - generic [ref=e103]:
+              - img [ref=e104]
+              - text: No credit card
+            - generic [ref=e107]:
+              - img [ref=e108]
+              - text: 2,400+ questions
+            - generic [ref=e111]:
+              - img [ref=e112]
+              - text: AI explanations
+    - contentinfo [ref=e115]:
+      - generic [ref=e116]:
+        - generic [ref=e117]:
+          - img [ref=e119]
+          - generic [ref=e122]: CertForge
+        - paragraph [ref=e123]: © 2026 CertForge. Not affiliated with Amazon Web Services.
+        - generic [ref=e124]:
+          - link "Practice Questions" [ref=e125] [cursor=pointer]:
+            - /url: /practice-questions
+          - link "Pricing" [ref=e126] [cursor=pointer]:
+            - /url: /#pricing
+          - link "Get Started" [ref=e127] [cursor=pointer]:
+            - /url: /signup
+  - region "Notifications alt+T"
+  - alert [ref=e128]

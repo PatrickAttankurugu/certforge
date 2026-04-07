@@ -1,0 +1,212 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "CertForge" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img [ref=e7]
+          - generic [ref=e10]: CertForge
+        - generic [ref=e11]:
+          - link "Pass Guarantee" [ref=e12] [cursor=pointer]:
+            - /url: /guarantee
+          - link "Teams" [ref=e13] [cursor=pointer]:
+            - /url: /teams
+          - link "Certifications" [ref=e14] [cursor=pointer]:
+            - /url: /certifications
+          - link "Lifetime Access" [ref=e15] [cursor=pointer]:
+            - /url: /lifetime
+        - generic [ref=e16]:
+          - link "Sign in" [ref=e17] [cursor=pointer]:
+            - /url: /login
+            - button "Sign in" [ref=e18]
+          - link "Start Free" [ref=e19] [cursor=pointer]:
+            - /url: /signup
+            - button "Start Free" [ref=e20]:
+              - text: Start Free
+              - img
+    - main [ref=e21]:
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - generic [ref=e24]:
+            - img
+            - text: Team & Corporate Plans
+          - heading "Get your entire team AWS certified" [level=1] [ref=e25]
+          - paragraph [ref=e26]: Centralized admin dashboard, team progress tracking, bulk discounts, and everything your team needs to pass the AWS Solutions Architect exam together.
+        - generic [ref=e27]:
+          - heading "Team Pricing" [level=2] [ref=e28]
+          - generic [ref=e29]:
+            - generic [ref=e31]:
+              - generic [ref=e32]:
+                - paragraph [ref=e33]: Small Team
+                - paragraph [ref=e34]: 5-10 seats
+              - generic [ref=e35]:
+                - paragraph [ref=e36]: $15/seat/mo
+                - paragraph [ref=e37]: Save 49% vs individual
+              - list [ref=e38]:
+                - listitem [ref=e39]:
+                  - img [ref=e40]
+                  - text: All Premium features
+                - listitem [ref=e43]:
+                  - img [ref=e44]
+                  - text: Admin dashboard
+                - listitem [ref=e47]:
+                  - img [ref=e48]
+                  - text: Team progress tracking
+                - listitem [ref=e51]:
+                  - img [ref=e52]
+                  - text: Shared question pools
+                - listitem [ref=e55]:
+                  - img [ref=e56]
+                  - text: Email support
+              - link "Get Started" [ref=e59] [cursor=pointer]:
+                - /url: /signup
+                - button "Get Started" [ref=e60]
+            - generic [ref=e61]:
+              - generic [ref=e63]: Most Popular
+              - generic [ref=e64]:
+                - generic [ref=e65]:
+                  - paragraph [ref=e66]: Business
+                  - paragraph [ref=e67]: 11-50 seats
+                - generic [ref=e68]:
+                  - paragraph [ref=e69]: $12/seat/mo
+                  - paragraph [ref=e70]: Save 59% vs individual
+                - list [ref=e71]:
+                  - listitem [ref=e72]:
+                    - img [ref=e73]
+                    - text: Everything in Small Team
+                  - listitem [ref=e76]:
+                    - img [ref=e77]
+                    - text: Team analytics & reports
+                  - listitem [ref=e80]:
+                    - img [ref=e81]
+                    - text: Challenge each other
+                  - listitem [ref=e84]:
+                    - img [ref=e85]
+                    - text: Dedicated account manager
+                  - listitem [ref=e88]:
+                    - img [ref=e89]
+                    - text: SSO integration
+                - link "Get Started" [ref=e92] [cursor=pointer]:
+                  - /url: /signup
+                  - button "Get Started" [ref=e93]
+            - generic [ref=e95]:
+              - generic [ref=e96]:
+                - paragraph [ref=e97]: Enterprise
+                - paragraph [ref=e98]: 50+ seats
+              - generic [ref=e99]:
+                - paragraph [ref=e100]: Custom
+                - paragraph [ref=e101]: Volume discounts available
+              - list [ref=e102]:
+                - listitem [ref=e103]:
+                  - img [ref=e104]
+                  - text: Everything in Business
+                - listitem [ref=e107]:
+                  - img [ref=e108]
+                  - text: Custom question pools
+                - listitem [ref=e111]:
+                  - img [ref=e112]
+                  - text: API access
+                - listitem [ref=e115]:
+                  - img [ref=e116]
+                  - text: SLA guarantee
+                - listitem [ref=e119]:
+                  - img [ref=e120]
+                  - text: Invoice billing
+                - listitem [ref=e123]:
+                  - img [ref=e124]
+                  - text: Custom integrations
+              - link "Contact Sales" [ref=e127] [cursor=pointer]:
+                - /url: mailto:teams@certforge.dev
+                - button "Contact Sales" [ref=e128]
+        - generic [ref=e129]:
+          - heading "Team Features" [level=2] [ref=e130]
+          - generic [ref=e131]:
+            - generic [ref=e133]:
+              - img [ref=e135]
+              - heading "Team Analytics" [level=3] [ref=e137]
+              - paragraph [ref=e138]: See how each team member is progressing across all 4 domains. Identify who needs extra support.
+            - generic [ref=e140]:
+              - img [ref=e142]
+              - heading "Shared Question Pools" [level=3] [ref=e146]
+              - paragraph [ref=e147]: Create custom question sets focused on your team's specific AWS usage and architecture patterns.
+            - generic [ref=e149]:
+              - img [ref=e151]
+              - heading "Team Challenges" [level=3] [ref=e157]
+              - paragraph [ref=e158]: Challenge teammates to mock exam showdowns. Friendly competition drives better results.
+            - generic [ref=e160]:
+              - img [ref=e162]
+              - heading "Admin Dashboard" [level=3] [ref=e164]
+              - paragraph [ref=e165]: Manage seats, track progress, and generate reports from a centralized admin panel.
+            - generic [ref=e167]:
+              - img [ref=e169]
+              - heading "Bulk Onboarding" [level=3] [ref=e171]
+              - paragraph [ref=e172]: Invite your team with a single link. Everyone gets set up and studying in minutes.
+            - generic [ref=e174]:
+              - img [ref=e176]
+              - heading "Progress Tracking" [level=3] [ref=e181]
+              - paragraph [ref=e182]: Track certification readiness across your organization. Know exactly when each member is exam-ready.
+        - generic [ref=e185]:
+          - heading "Contact Our Team Sales" [level=2] [ref=e186]:
+            - img [ref=e187]
+            - text: Contact Our Team Sales
+          - paragraph [ref=e190]: Have questions about team plans? Reach out and we will get back to you within one business day.
+          - generic [ref=e191]:
+            - textbox "Your name" [ref=e192]
+            - textbox "Work email" [ref=e193]
+            - textbox "Company name" [ref=e194]
+            - spinbutton [ref=e195]
+            - textbox "Any additional details..." [ref=e196]
+            - button "Send Inquiry" [ref=e197]
+        - generic [ref=e198]:
+          - heading "Ready to certify your team?" [level=2] [ref=e199]
+          - paragraph [ref=e200]: Start with a small team plan and scale as needed. Every seat includes full Premium access.
+          - link "Get Started" [ref=e201] [cursor=pointer]:
+            - /url: /signup
+            - button "Get Started" [ref=e202]:
+              - text: Get Started
+              - img
+    - contentinfo [ref=e203]:
+      - generic [ref=e204]:
+        - generic [ref=e205]:
+          - paragraph [ref=e206]: Product
+          - list [ref=e207]:
+            - listitem [ref=e208]:
+              - link "Features" [ref=e209] [cursor=pointer]:
+                - /url: /#features
+            - listitem [ref=e210]:
+              - link "Pricing" [ref=e211] [cursor=pointer]:
+                - /url: /#pricing
+            - listitem [ref=e212]:
+              - link "Lifetime Access" [ref=e213] [cursor=pointer]:
+                - /url: /lifetime
+            - listitem [ref=e214]:
+              - link "Teams" [ref=e215] [cursor=pointer]:
+                - /url: /teams
+        - generic [ref=e216]:
+          - paragraph [ref=e217]: Resources
+          - list [ref=e218]:
+            - listitem [ref=e219]:
+              - link "Free Practice Questions" [ref=e220] [cursor=pointer]:
+                - /url: /practice-questions
+            - listitem [ref=e221]:
+              - link "Certifications" [ref=e222] [cursor=pointer]:
+                - /url: /certifications
+            - listitem [ref=e223]:
+              - link "Pass Guarantee" [ref=e224] [cursor=pointer]:
+                - /url: /guarantee
+        - generic [ref=e225]:
+          - paragraph [ref=e226]: Company
+          - list [ref=e227]:
+            - listitem [ref=e228]:
+              - link "Affiliates" [ref=e229] [cursor=pointer]:
+                - /url: /affiliates
+            - listitem [ref=e230]:
+              - link "Gift Cards" [ref=e231] [cursor=pointer]:
+                - /url: /gift
+        - generic [ref=e232]:
+          - generic [ref=e233]:
+            - img [ref=e235]
+            - generic [ref=e238]: CertForge
+          - paragraph [ref=e239]: © 2026 CertForge. Not affiliated with Amazon Web Services.
+  - region "Notifications alt+T"
+  - alert [ref=e240]
